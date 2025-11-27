@@ -14,7 +14,7 @@ We also release two valuable resources to support research in this domain:
 1. **InteriorGS** – a dataset of 1,000 indoor 3DGS scenes with dense object-level annotations.
 2. **SAGE-Bench** – the first VLN benchmark built on 3DGS, containing 2 million trajectory–instruction pairs, a hierarchical instruction generation pipeline, and three novel navigation-continuous evaluation metrics.
 
-![Introduction](./assets/Introduction.png)
+![Introduction](./src/Introduction.png)
 
 
 
@@ -50,7 +50,7 @@ We also release two valuable resources to support research in this domain:
 
 Current Vision-Language Navigation (VLN) follows the sim-to-real paradigm, where agents first learn navigation policies in simulation and then transfer them to the real world. 3D Gaussian Splatting (3DGS), a 3D representation method with photorealistic real-time rendering capability, has been regarded as a promising tool for narrowing the sim-to-real gap, yet it still lacks the fine-grained semantics and physical executability required for embodied navigation. To address this, we propose **SAGE-3D** (**S**emantical and Physical-**A**ligned **G**aussian **E**nvironments for **3D** Navigation), a new paradigm that upgrades 3DGS into an executable, semantically and physically aligned environment foundation SAGE-3D comprises two key components: **1) Object-Level Semantic Grounding**, which augments 3DGS with fine-grained, object-level annotations; and **2) Physics-Aware Execution Jointing**, which embeds collision bodies into 3DGS and provides rich physical interaction interfaces.
 
-![image-20250925024906302](./assets/SAGE-3D.png)
+![image-20250925024906302](./src/SAGE-3D.png)
 
 1. **Task Types**: 
 **VLN**: Takes text and assets as input, provides a concrete goal, and evaluates whether the agent correctly reaches the target location.
@@ -59,7 +59,7 @@ Current Vision-Language Navigation (VLN) follows the sim-to-real paradigm, where
 2. **Scene Complexity**: Defined by asset density—scenes with more than 376 assets are labeled “many,” and those with fewer than 184 assets are labeled “few.”
 3. **Path Complexity**: Defined by path length—paths longer than 29.0 m are labeled “long,” and those shorter than 8.4 m are labeled “short.”
 
-![Comparison among different versions](./assets/SAGE-Bench.png)
+![Comparison among different versions](./src/SAGE-Bench.png)
 
 
 
@@ -1046,19 +1046,19 @@ python scripts/vlm_server_multigpu.py \
 
 ![image-20250925024243483](image-20250925024243483.png)
 
-![Comparison among different versions](./assets/results1.png)
+![Comparison among different versions](./src/results1.png)
 
 #### 2）Impact of the number of scenes and samples on model performance.
 
-![Comparison among different versions](./assets/results2.png)
+![Comparison among different versions](./src/results2.png)
 
 #### 3）Visualization case study of navigation natural continuity.
-![Comparison among different versions](./assets/results3.png)
+![Comparison among different versions](./src/results3.png)
 <a id="Cition"></a>
 
 #### 4）Results under Different Evaluation Slice.
 
-![image-20250925024445878](./assets/results4.png)
+![image-20250925024445878](./src/results4.png)
 
 
 
