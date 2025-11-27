@@ -29,11 +29,10 @@ We also release two valuable resources to support research in this domain:
 
 ## 📌 Contents
 - [News](#new)
-- [Overview](#overview)
-- [SAGE-3D Scene Data Preparation](#-sage-3d-scene-data-preparation)
-- [VLN Data Construction Pipeline](#-vln-data-construction-pipeline)
-- [SAGE-Bench Evaluation](#-sage-bench-evaluation)
-- [Experiment Results](#experiment)
+- [Overview](#Overview)
+- [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation)
+- [VLN Data Construction Pipeline](#vln-data-construction-pipeline)
+- [SAGE-Bench Evaluation](#sage-bench-evaluation)
 - [Citation](#citation)
 
 
@@ -65,7 +64,7 @@ Current Vision-Language Navigation (VLN) follows the sim-to-real paradigm, where
 
 
 
-<a id="Setups_for_Similar"></a>
+<a id="sage-3d-scene-data-preparation"></a>
 
 ## 🏗️ SAGE-3D Scene Data Preparation
 
@@ -270,7 +269,9 @@ echo "Scene preparation complete! USDA files are ready at /path/to/usda_output"
 
 **Note:** The prepared USDA files will be used in both VLN data construction (for rendering training images) and benchmark evaluation (for testing navigation models).
 
----
+
+
+<a id="vln-data-construction-pipeline"></a>
 
 ## 🔧 VLN Data Construction Pipeline
 
@@ -745,9 +746,9 @@ python Code/data_pipeline/training_data_construction/create_navila_dataset.py \
 - For distributed image generation, run multiple instances with different `--instance-id`
 - Adjust `--max-scenes`, `--limit`, and `--max-trajectories` based on your testing needs
 
----
 
----
+
+<a id="sage-bench-evaluation"></a>
 
 ## 🎯 SAGE-Bench Evaluation
 
@@ -780,7 +781,7 @@ pip install -r requirements.txt
 
 SAGE-Bench supports multiple VLN models through a server-client architecture. You need to start a model server before running the benchmark.
 
-#### 2.1 NaVILA Model Server
+#### NaVILA Model Server
 
 **Activate Environment and Start Server:**
 
@@ -806,7 +807,7 @@ python scripts/vlm_server_multigpu.py \
 - `navila-llama3-8b-4f`: NaVILA with LLaMA3-8B backbone, 4 frames
 - Other NaVILA variants trained on SAGE-Bench data
 
-#### 2.2 MLLM Model Server
+#### MLLM Model Server
 
 Start an MLLM server for general vision-language models:
 
@@ -855,7 +856,7 @@ python Code/benchmark/environment_evaluation/evaluation_model/MLLM/mllm_server.p
 
 SAGE-Bench supports three types of navigation tasks:
 
-#### 3.1 Standard VLN Test
+#### Standard VLN Test
 
 Test models on high-level vision-language navigation with instruction following:
 
@@ -878,7 +879,7 @@ Test models on high-level vision-language navigation with instruction following:
 - **Trajectory-Unseen**: Test on unseen trajectory patterns in seen scenes
 - **Instruction-Unseen**: Test on unseen instruction phrasings for seen trajectories
 
-#### 3.2 Low-Level VLN Test
+#### Low-Level VLN Test
 
 Test models on low-level control and kinematic evaluation:
 
@@ -900,7 +901,7 @@ Test models on low-level control and kinematic evaluation:
 - Single-step navigation goals
 - Simple spatial references
 
-#### 3.3 No-Goal Navigation Test
+#### No-Goal Navigation Test
 
 Test exploration and collision avoidance without explicit goals:
 
