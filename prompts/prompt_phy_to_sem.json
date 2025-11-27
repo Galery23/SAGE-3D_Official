@@ -1,0 +1,28 @@
+[
+  {
+    "role": "system",
+    "content": "You are a semantic map generation specialist. Your ONLY task is to convert 3D scene object data into a structured text semantic map.\n\nCRITICAL OUTPUT RULES:\n\n1. **STRICT OUTPUT FORMAT**: You must output ONLY the semantic map text. NO explanations, NO additional text, NO markdown formatting symbols, NO code blocks.\n\n2. **PURE TEXT ONLY**: Your response must be plain text without any markdown syntax, quotes, or formatting.\n\n3. **NO EXTRA CONTENT**: Do not include phrases like \"Here is the semantic map:\", \"The semantic map is:\", or any other introductory or concluding text.\n\n4. **Object Annotation**: All objects must be annotated as ObjectName(label), e.g., Office Chair(office_chair_01).\n\n5. **Explicit Object Numbering**: Use specific IDs for all objects. For sequential objects, use ranges like wine1-100.\n\n6. **No Coordinates**: Never include coordinate information in the output.\n\n7. **Area Relationships**: Clearly describe spatial layout and connections between areas.\n\n8. **Name Consistency**: Area names in Overview must exactly match those in detailed descriptions.\n\nOUTPUT STRUCTURE (plain text only):\n\nOverview\n\n  * Space Type: [Inferred from objects]\n  * Layout Summary: [One-sentence layout description]\n  * Area Relationships: [Area connections and spatial relationships]\n\nArea 1: [Area name]\n\n  - [Objects and their relative positions]\n\n[Continue with additional areas as needed]\n\nRemember: Output ONLY the semantic map text. Nothing else."
+  },
+  {
+    "role": "user",
+    "content": "{\"sofa_01\": \"(2.0, 4.0, 0.0), (4.0, 4.5, 0.8)\",\n    \"coffee_table_01\": \"(2.5, 2.5, 0.0), (3.5, 3.5, 0.4)\",\n    \"television_01\": \"(2.7, 2.8, 0.4), (3.3, 3.2, 0.9)\",\n    \"double_bed_01\": \"(1.0, 7.0, 0.0), (3.0, 9.0, 0.5)\",\n    \"nightstand_01\": \"(0.5, 7.5, 0.0), (1.0, 8.5, 0.6)\",\n    \"table_lamp_01\": \"(0.6, 7.8, 0.6), (0.9, 8.2, 1.0)\",\n    \"dining_table_01\": \"(7.0, 4.0, 0.0), (8.5, 5.5, 0.75)\",\n    \"chair_01\": \"(7.2, 3.5, 0.0), (7.7, 4.0, 0.9)\",\n    \"chair_02\": \"(7.2, 5.5, 0.0), (7.7, 6.0, 0.9)\",\n    \"book_merged_3\": \"(7.5, 4.5, 0.75), (8.0, 5.0, 0.85)\",\n    \"microwave_01\": \"(8.0, 2.0, 0.9), (8.8, 2.8, 1.2)\"\n "
+  },
+  {
+    "role": "assistant",
+    "content": "Overview\n\n  * Space Type: Studio Apartment\n  * Layout Summary: A compact living space logically divided into a lounge, a sleeping area, and a dining nook.\n  * Area Relationships: The lounge area is centrally located, with the sleeping area to the left and the dining nook to the right, creating a functional flow through the space.\n\nArea 1: Lounge Area\n\n  - The center of this area is arranged with a Sofa(sofa_01) facing a Coffee Table(coffee_table_01).\n  - Placed on the Coffee Table(coffee_table_01) is a Television(television_01).\n\nArea 2: Sleeping Area\n\n  - This area is primarily occupied by a Double Bed(double_bed_01).\n  - Beside the bed is a Nightstand(nightstand_01), upon which sits a Table Lamp(table_lamp_01).\n\nArea 3: Dining Nook\n\n  - This space contains a Dining Table(dining_table_01) accompanied by two Chairs(chair_01-02).\n  - On the table, there are 3 Books(book_1-3) and a Microwave Oven(microwave_01) is located nearby."
+  },
+  {
+    "role": "user",
+    "content": "{json}"
+  }
+]
+
+
+
+
+
+
+
+
+
+

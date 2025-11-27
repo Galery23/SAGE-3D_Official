@@ -1,0 +1,1102 @@
+[
+  {
+    "world_id": 839876,
+    "design_type": "Teahouse"
+  },
+  {
+    "world_id": 839951,
+    "design_type": "Teahouse"
+  },
+  {
+    "world_id": 840023,
+    "design_type": "Teahouse"
+  },
+  {
+    "world_id": 839916,
+    "design_type": "Office"
+  },
+  {
+    "world_id": 839918,
+    "design_type": "Office"
+  },
+  {
+    "world_id": 839917,
+    "design_type": "Office"
+  },
+  {
+    "world_id": 840022,
+    "design_type": "Swimming Pool"
+  },
+  {
+    "world_id": 839950,
+    "design_type": "Swimming Pool"
+  },
+  {
+    "world_id": 839921,
+    "design_type": "Hotel Lobby"
+  },
+  {
+    "world_id": 840042,
+    "design_type": "Hotel Lobby"
+  },
+  {
+    "world_id": 840025,
+    "design_type": "Hotel Lobby"
+  },
+  {
+    "world_id": 839920,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 839875,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 840026,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 839878,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 839953,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 839877,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 840027,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 840028,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 839955,
+    "design_type": "Bubble Tea Shop"
+  },
+  {
+    "world_id": 839956,
+    "design_type": "Bubble Tea Shop"
+  },
+  {
+    "world_id": 839957,
+    "design_type": "Bubble Tea Shop"
+  },
+  {
+    "world_id": 839922,
+    "design_type": "Conference Room"
+  },
+  {
+    "world_id": 839923,
+    "design_type": "Conference Room"
+  },
+  {
+    "world_id": 839873,
+    "design_type": "Conference Room"
+  },
+  {
+    "world_id": 839959,
+    "design_type": "Public Shower Room"
+  },
+  {
+    "world_id": 839880,
+    "design_type": "Public Shower Room"
+  },
+  {
+    "world_id": 839958,
+    "design_type": "Public Shower Room"
+  },
+  {
+    "world_id": 839879,
+    "design_type": "Infusion Hall"
+  },
+  {
+    "world_id": 839881,
+    "design_type": "Infusion Hall"
+  },
+  {
+    "world_id": 839961,
+    "design_type": "Shopping Mall"
+  },
+  {
+    "world_id": 839882,
+    "design_type": "Shopping Mall"
+  },
+  {
+    "world_id": 839962,
+    "design_type": "Shopping Mall"
+  },
+  {
+    "world_id": 839925,
+    "design_type": "Supermarket"
+  },
+  {
+    "world_id": 839926,
+    "design_type": "Supermarket"
+  },
+  {
+    "world_id": 839883,
+    "design_type": "Café"
+  },
+  {
+    "world_id": 839884,
+    "design_type": "Café"
+  },
+  {
+    "world_id": 839927,
+    "design_type": "Café"
+  },
+  {
+    "world_id": 840029,
+    "design_type": "Barbershop"
+  },
+  {
+    "world_id": 839963,
+    "design_type": "Barbershop"
+  },
+  {
+    "world_id": 839964,
+    "design_type": "Barbershop"
+  },
+  {
+    "world_id": 840030,
+    "design_type": "Pharmacy"
+  },
+  {
+    "world_id": 839967,
+    "design_type": "Pharmacy"
+  },
+  {
+    "world_id": 840031,
+    "design_type": "Shared Lounge"
+  },
+  {
+    "world_id": 839887,
+    "design_type": "Shared Lounge"
+  },
+  {
+    "world_id": 839886,
+    "design_type": "Shared Lounge"
+  },
+  {
+    "world_id": 839928,
+    "design_type": "Beauty Salon"
+  },
+  {
+    "world_id": 839888,
+    "design_type": "Beauty Salon"
+  },
+  {
+    "world_id": 840032,
+    "design_type": "Beauty Salon"
+  },
+  {
+    "world_id": 839931,
+    "design_type": "Karaoke Bar"
+  },
+  {
+    "world_id": 840033,
+    "design_type": "Karaoke Bar"
+  },
+  {
+    "world_id": 839965,
+    "design_type": "Cinema"
+  },
+  {
+    "world_id": 839929,
+    "design_type": "Cinema"
+  },
+  {
+    "world_id": 839949,
+    "design_type": "Cinema"
+  },
+  {
+    "world_id": 839890,
+    "design_type": "Art Gallery"
+  },
+  {
+    "world_id": 839930,
+    "design_type": "Art Gallery"
+  },
+  {
+    "world_id": 839966,
+    "design_type": "Art Gallery"
+  },
+  {
+    "world_id": 839972,
+    "design_type": "Fencing Hall"
+  },
+  {
+    "world_id": 839971,
+    "design_type": "Fencing Hall"
+  },
+  {
+    "world_id": 839969,
+    "design_type": "Fencing Hall"
+  },
+  {
+    "world_id": 839932,
+    "design_type": "Educational institution"
+  },
+  {
+    "world_id": 839891,
+    "design_type": "Educational institution"
+  },
+  {
+    "world_id": 839892,
+    "design_type": "Educational institution"
+  },
+  {
+    "world_id": 839933,
+    "design_type": "Amusement Park"
+  },
+  {
+    "world_id": 839968,
+    "design_type": "Amusement Park"
+  },
+  {
+    "world_id": 839970,
+    "design_type": "Amusement Park"
+  },
+  {
+    "world_id": 839973,
+    "design_type": "Concert Hall"
+  },
+  {
+    "world_id": 839893,
+    "design_type": "Concert Hall"
+  },
+  {
+    "world_id": 839974,
+    "design_type": "Concert Hall"
+  },
+  {
+    "world_id": 839975,
+    "design_type": "Library"
+  },
+  {
+    "world_id": 839976,
+    "design_type": "Library"
+  },
+  {
+    "world_id": 839895,
+    "design_type": "Karting Circuit"
+  },
+  {
+    "world_id": 839894,
+    "design_type": "Karting Circuit"
+  },
+  {
+    "world_id": 839896,
+    "design_type": "Karting Circuit"
+  },
+  {
+    "world_id": 840035,
+    "design_type": "Office Discussion Area"
+  },
+  {
+    "world_id": 839978,
+    "design_type": "Office Discussion Area"
+  },
+  {
+    "world_id": 839935,
+    "design_type": "Office Discussion Area"
+  },
+  {
+    "world_id": 839977,
+    "design_type": "Exhibition Hall"
+  },
+  {
+    "world_id": 839979,
+    "design_type": "Exhibition Hall"
+  },
+  {
+    "world_id": 839980,
+    "design_type": "High-End Gym Design"
+  },
+  {
+    "world_id": 839982,
+    "design_type": "High-End Gym Design"
+  },
+  {
+    "world_id": 839983,
+    "design_type": "Dental Clinic"
+  },
+  {
+    "world_id": 839934,
+    "design_type": "Dental Clinic"
+  },
+  {
+    "world_id": 839984,
+    "design_type": "Dental Clinic"
+  },
+  {
+    "world_id": 839899,
+    "design_type": "Auto Expo"
+  },
+  {
+    "world_id": 839898,
+    "design_type": "Auto Expo"
+  },
+  {
+    "world_id": 839897,
+    "design_type": "Auto Expo"
+  },
+  {
+    "world_id": 839985,
+    "design_type": "Children's Playground"
+  },
+  {
+    "world_id": 839987,
+    "design_type": "Children's Playground"
+  },
+  {
+    "world_id": 839986,
+    "design_type": "Children's Playground"
+  },
+  {
+    "world_id": 839939,
+    "design_type": "Property Sales Center"
+  },
+  {
+    "world_id": 839988,
+    "design_type": "Property Sales Center"
+  },
+  {
+    "world_id": 839900,
+    "design_type": "Banquet Hall"
+  },
+  {
+    "world_id": 840037,
+    "design_type": "Banquet Hall"
+  },
+  {
+    "world_id": 840039,
+    "design_type": "Banquet Hall"
+  },
+  {
+    "world_id": 840040,
+    "design_type": "Sanatorium"
+  },
+  {
+    "world_id": 840041,
+    "design_type": "Sanatorium"
+  },
+  {
+    "world_id": 840024,
+    "design_type": "Sanatorium"
+  },
+  {
+    "world_id": 839901,
+    "design_type": "Conference Hall"
+  },
+  {
+    "world_id": 839902,
+    "design_type": "Conference Hall"
+  },
+  {
+    "world_id": 839936,
+    "design_type": "Conference Hall"
+  },
+  {
+    "world_id": 839938,
+    "design_type": "Team Break Room (Pantry)"
+  },
+  {
+    "world_id": 839989,
+    "design_type": "Team Break Room (Pantry)"
+  },
+  {
+    "world_id": 839990,
+    "design_type": "Team Break Room (Pantry)"
+  },
+  {
+    "world_id": 840043,
+    "design_type": "Bar"
+  },
+  {
+    "world_id": 839903,
+    "design_type": "Bar"
+  },
+  {
+    "world_id": 839904,
+    "design_type": "Airbnb rental"
+  },
+  {
+    "world_id": 839991,
+    "design_type": "Airbnb rental"
+  },
+  {
+    "world_id": 840045,
+    "design_type": "Airbnb rental"
+  },
+  {
+    "world_id": 839992,
+    "design_type": "Museum"
+  },
+  {
+    "world_id": 839994,
+    "design_type": "Museum"
+  },
+  {
+    "world_id": 840046,
+    "design_type": "Parking Lot"
+  },
+  {
+    "world_id": 840048,
+    "design_type": "Parking Lot"
+  },
+  {
+    "world_id": 840049,
+    "design_type": "Art Studio"
+  },
+  {
+    "world_id": 839905,
+    "design_type": "Art Studio"
+  },
+  {
+    "world_id": 839996,
+    "design_type": "Art Studio"
+  },
+  {
+    "world_id": 839997,
+    "design_type": "Art Studio"
+  },
+  {
+    "world_id": 839907,
+    "design_type": "Bakery"
+  },
+  {
+    "world_id": 840050,
+    "design_type": "Bakery"
+  },
+  {
+    "world_id": 840051,
+    "design_type": "Bakery"
+  },
+  {
+    "world_id": 840052,
+    "design_type": "Bakery"
+  },
+  {
+    "world_id": 840053,
+    "design_type": "Bakery"
+  },
+  {
+    "world_id": 840054,
+    "design_type": "Basketball Training Center"
+  },
+  {
+    "world_id": 840055,
+    "design_type": "Basketball Training Center"
+  },
+  {
+    "world_id": 839937,
+    "design_type": "Basketball Training Center"
+  },
+  {
+    "world_id": 839906,
+    "design_type": "Billiards Room"
+  },
+  {
+    "world_id": 840058,
+    "design_type": "Billiards Room"
+  },
+  {
+    "world_id": 840059,
+    "design_type": "Billiards Room"
+  },
+  {
+    "world_id": 840060,
+    "design_type": "Billiards Room"
+  },
+  {
+    "world_id": 839908,
+    "design_type": "Bridal Boutique"
+  },
+  {
+    "world_id": 840062,
+    "design_type": "Bridal Boutique"
+  },
+  {
+    "world_id": 839940,
+    "design_type": "Bridal Boutique"
+  },
+  {
+    "world_id": 840063,
+    "design_type": "Bridal Boutique"
+  },
+  {
+    "world_id": 840064,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 840000,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 840004,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 839909,
+    "design_type": "Board and Card Game Room"
+  },
+  {
+    "world_id": 840065,
+    "design_type": "Board and Card Game Room"
+  },
+  {
+    "world_id": 839942,
+    "design_type": "Board and Card Game Room"
+  },
+  {
+    "world_id": 840066,
+    "design_type": "Board and Card Game Room"
+  },
+  {
+    "world_id": 840067,
+    "design_type": "Board and Card Game Room"
+  },
+  {
+    "world_id": 840068,
+    "design_type": "Tobacco Shop"
+  },
+  {
+    "world_id": 840069,
+    "design_type": "Tobacco Shop"
+  },
+  {
+    "world_id": 840070,
+    "design_type": "Tobacco Shop"
+  },
+  {
+    "world_id": 840071,
+    "design_type": "Tobacco Shop"
+  },
+  {
+    "world_id": 840072,
+    "design_type": "Tobacco Shop"
+  },
+  {
+    "world_id": 839910,
+    "design_type": "Dance Studio"
+  },
+  {
+    "world_id": 840002,
+    "design_type": "Dance Studio"
+  },
+  {
+    "world_id": 840003,
+    "design_type": "Dance Studio"
+  },
+  {
+    "world_id": 840005,
+    "design_type": "Dance Studio"
+  },
+  {
+    "world_id": 840074,
+    "design_type": "Flea Market"
+  },
+  {
+    "world_id": 840007,
+    "design_type": "Flea Market"
+  },
+  {
+    "world_id": 840008,
+    "design_type": "Flea Market"
+  },
+  {
+    "world_id": 840009,
+    "design_type": "Flea Market"
+  },
+  {
+    "world_id": 840073,
+    "design_type": "Foot spa"
+  },
+  {
+    "world_id": 840075,
+    "design_type": "Foot spa"
+  },
+  {
+    "world_id": 840010,
+    "design_type": "Foot spa"
+  },
+  {
+    "world_id": 840012,
+    "design_type": "Foot spa"
+  },
+  {
+    "world_id": 839944,
+    "design_type": "Foot spa"
+  },
+  {
+    "world_id": 840076,
+    "design_type": "Optical Store"
+  },
+  {
+    "world_id": 840011,
+    "design_type": "Optical Store"
+  },
+  {
+    "world_id": 840014,
+    "design_type": "Optical Store"
+  },
+  {
+    "world_id": 840013,
+    "design_type": "Optical Store"
+  },
+  {
+    "world_id": 840077,
+    "design_type": "Innovation Lab"
+  },
+  {
+    "world_id": 840078,
+    "design_type": "Innovation Lab"
+  },
+  {
+    "world_id": 840080,
+    "design_type": "Innovation Lab"
+  },
+  {
+    "world_id": 840015,
+    "design_type": "Innovation Lab"
+  },
+  {
+    "world_id": 840081,
+    "design_type": "Kindergarten"
+  },
+  {
+    "world_id": 840082,
+    "design_type": "Kindergarten"
+  },
+  {
+    "world_id": 839945,
+    "design_type": "Kindergarten"
+  },
+  {
+    "world_id": 840083,
+    "design_type": "Kindergarten"
+  },
+  {
+    "world_id": 840084,
+    "design_type": "Kindergarten"
+  },
+  {
+    "world_id": 840085,
+    "design_type": "Livestream Studio"
+  },
+  {
+    "world_id": 840086,
+    "design_type": "Livestream Studio"
+  },
+  {
+    "world_id": 840087,
+    "design_type": "Livestream Studio"
+  },
+  {
+    "world_id": 840089,
+    "design_type": "Livestream Studio"
+  },
+  {
+    "world_id": 840088,
+    "design_type": "Livestream Studio"
+  },
+  {
+    "world_id": 839912,
+    "design_type": "Pet Shop"
+  },
+  {
+    "world_id": 839911,
+    "design_type": "Pet Shop"
+  },
+  {
+    "world_id": 840090,
+    "design_type": "Pet Shop"
+  },
+  {
+    "world_id": 840091,
+    "design_type": "Pet Shop"
+  },
+  {
+    "world_id": 840092,
+    "design_type": "Pet Shop"
+  },
+  {
+    "world_id": 839913,
+    "design_type": "Communal Lounge"
+  },
+  {
+    "world_id": 840093,
+    "design_type": "Communal Lounge"
+  },
+  {
+    "world_id": 839948,
+    "design_type": "Communal Lounge"
+  },
+  {
+    "world_id": 840017,
+    "design_type": "Communal Lounge"
+  },
+  {
+    "world_id": 839914,
+    "design_type": "Reading Room"
+  },
+  {
+    "world_id": 840016,
+    "design_type": "Reading Room"
+  },
+  {
+    "world_id": 840018,
+    "design_type": "Reading Room"
+  },
+  {
+    "world_id": 840019,
+    "design_type": "Reading Room"
+  },
+  {
+    "world_id": 840020,
+    "design_type": "Reading Room"
+  },
+  {
+    "world_id": 840094,
+    "design_type": "Recording studio"
+  },
+  {
+    "world_id": 840096,
+    "design_type": "Recording studio"
+  },
+  {
+    "world_id": 839915,
+    "design_type": "Recording studio"
+  },
+  {
+    "world_id": 839946,
+    "design_type": "Recording studio"
+  },
+  {
+    "world_id": 839919,
+    "design_type": "Recording studio"
+  },
+  {
+    "world_id": 840097,
+    "design_type": "Murder Mystery Studio"
+  },
+  {
+    "world_id": 840098,
+    "design_type": "Murder Mystery Studio"
+  },
+  {
+    "world_id": 839947,
+    "design_type": "Murder Mystery Studio"
+  },
+  {
+    "world_id": 840109,
+    "design_type": "Murder Mystery Studio"
+  },
+  {
+    "world_id": 840021,
+    "design_type": "Murder Mystery Studio"
+  },
+  {
+    "world_id": 840099,
+    "design_type": "Shared Kitchen"
+  },
+  {
+    "world_id": 840100,
+    "design_type": "Shared Kitchen"
+  },
+  {
+    "world_id": 840101,
+    "design_type": "Shared Kitchen"
+  },
+  {
+    "world_id": 840102,
+    "design_type": "Shared Kitchen"
+  },
+  {
+    "world_id": 840103,
+    "design_type": "Shared Kitchen"
+  },
+  {
+    "world_id": 840104,
+    "design_type": "Travel Agency"
+  },
+  {
+    "world_id": 840105,
+    "design_type": "Travel Agency"
+  },
+  {
+    "world_id": 840106,
+    "design_type": "Travel Agency"
+  },
+  {
+    "world_id": 840107,
+    "design_type": "Travel Agency"
+  },
+  {
+    "world_id": 840108,
+    "design_type": "Travel Agency"
+  },
+  {
+    "world_id": 840158,
+    "design_type": "Showroom"
+  },
+  {
+    "world_id": 840114,
+    "design_type": "Banquet Hall"
+  },
+  {
+    "world_id": 840115,
+    "design_type": "Sales Center"
+  },
+  {
+    "world_id": 840116,
+    "design_type": "Sales Center"
+  },
+  {
+    "world_id": 840117,
+    "design_type": "Communal Lounge"
+  },
+  {
+    "world_id": 840118,
+    "design_type": "Phlebotomy Room"
+  },
+  {
+    "world_id": 840119,
+    "design_type": "Phlebotomy Room"
+  },
+  {
+    "world_id": 840121,
+    "design_type": "Fencing Hall"
+  },
+  {
+    "world_id": 840120,
+    "design_type": "Fencing Hall"
+  },
+  {
+    "world_id": 840160,
+    "design_type": "Pharmacy"
+  },
+  {
+    "world_id": 840159,
+    "design_type": "Art Museum"
+  },
+  {
+    "world_id": 840122,
+    "design_type": "Parking Lot"
+  },
+  {
+    "world_id": 840123,
+    "design_type": "Parking Lot"
+  },
+  {
+    "world_id": 840124,
+    "design_type": "Beverage Bar Counter"
+  },
+  {
+    "world_id": 840125,
+    "design_type": "Beverage Bar Counter"
+  },
+  {
+    "world_id": 840162,
+    "design_type": "Museum"
+  },
+  {
+    "world_id": 840126,
+    "design_type": "Showroom"
+  },
+  {
+    "world_id": 840127,
+    "design_type": "Conference Room"
+  },
+  {
+    "world_id": 840128,
+    "design_type": "Conference Room"
+  },
+  {
+    "world_id": 840163,
+    "design_type": "Gym"
+  },
+  {
+    "world_id": 840130,
+    "design_type": "Office"
+  },
+  {
+    "world_id": 840132,
+    "design_type": "Brainstorming Area"
+  },
+  {
+    "world_id": 840131,
+    "design_type": "Brainstorming Area"
+  },
+  {
+    "world_id": 840133,
+    "design_type": "Tea Room"
+  },
+  {
+    "world_id": 840164,
+    "design_type": "Communal Lounge"
+  },
+  {
+    "world_id": 840165,
+    "design_type": "Auto Show"
+  },
+  {
+    "world_id": 840134,
+    "design_type": "Conference Hall"
+  },
+  {
+    "world_id": 840166,
+    "design_type": "Go-Kart Track"
+  },
+  {
+    "world_id": 840139,
+    "design_type": "Karaoke"
+  },
+  {
+    "world_id": 840167,
+    "design_type": "Art Museum"
+  },
+  {
+    "world_id": 840168,
+    "design_type": "Library"
+  },
+  {
+    "world_id": 840169,
+    "design_type": "Cinema"
+  },
+  {
+    "world_id": 840140,
+    "design_type": "Children's Playground"
+  },
+  {
+    "world_id": 840170,
+    "design_type": "Cinema"
+  },
+  {
+    "world_id": 840173,
+    "design_type": "Concert Hall"
+  },
+  {
+    "world_id": 840145,
+    "design_type": "Dental Clinic"
+  },
+  {
+    "world_id": 840172,
+    "design_type": "Public Shower Room"
+  },
+  {
+    "world_id": 840112,
+    "design_type": "Restaurant"
+  },
+  {
+    "world_id": 840171,
+    "design_type": "Auto Show"
+  },
+  {
+    "world_id": 840129,
+    "design_type": "Office"
+  },
+  {
+    "world_id": 840137,
+    "design_type": "Karaoke"
+  },
+  {
+    "world_id": 840174,
+    "design_type": "Pharmacy"
+  },
+  {
+    "world_id": 840148,
+    "design_type": "Museum"
+  },
+  {
+    "world_id": 840176,
+    "design_type": "Supermarket"
+  },
+  {
+    "world_id": 840150,
+    "design_type": "Gym"
+  },
+  {
+    "world_id": 840152,
+    "design_type": "Swimming Pool"
+  },
+  {
+    "world_id": 840151,
+    "design_type": "Swimming Pool"
+  },
+  {
+    "world_id": 840177,
+    "design_type": "Shopping Mall"
+  },
+  {
+    "world_id": 840178,
+    "design_type": "Shopping Mall"
+  },
+  {
+    "world_id": 840149,
+    "design_type": "Library"
+  },
+  {
+    "world_id": 840154,
+    "design_type": "Hair Salon"
+  },
+  {
+    "world_id": 840155,
+    "design_type": "Hair Salon"
+  },
+  {
+    "world_id": 840156,
+    "design_type": "Barbershop"
+  },
+  {
+    "world_id": 840157,
+    "design_type": "Barbershop"
+  },
+  {
+    "world_id": 840153,
+    "design_type": "Concert Hall"
+  },
+  {
+    "world_id": 840179,
+    "design_type": "Public Shower Room"
+  },
+  {
+    "world_id": 840180,
+    "design_type": "Bar"
+  },
+  {
+    "world_id": 840181,
+    "design_type": "Bar"
+  },
+  {
+    "world_id": 840182,
+    "design_type": "Bubble Tea Shop"
+  },
+  {
+    "world_id": 840183,
+    "design_type": "Bubble Tea Shop"
+  },
+  {
+    "world_id": 840185,
+    "design_type": "Café"
+  },
+  {
+    "world_id": 840186,
+    "design_type": "Airbnb rental"
+  },
+  {
+    "world_id": 840187,
+    "design_type": "Airbnb rental"
+  },
+  {
+    "world_id": 840188,
+    "design_type": "Restaurant"
+  }
+]
