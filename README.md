@@ -28,12 +28,13 @@ We also release two valuable resources to support research in this domain:
 
 
 ## 📌 Contents
-- [New](#new)
-- [Framework](#overview)
-- [Introduction](#Introduction)
-- [Setups for Similar](#Setups_for_Similar)
-- [Experiment](#Experiment)
-- [Conclusion](#Conclusion)
+- [News](#new)
+- [Overview](#overview)
+- [SAGE-3D Scene Data Preparation](#-sage-3d-scene-data-preparation)
+- [VLN Data Construction Pipeline](#-vln-data-construction-pipeline)
+- [SAGE-Bench Evaluation](#-sage-bench-evaluation)
+- [Experiment Results](#experiment)
+- [Citation](#citation)
 
 
 
@@ -968,9 +969,9 @@ SAGE-Bench provides comprehensive evaluation metrics:
 - **Collision-Free Success Rate**: Success without collisions
 
 **Navigation Continuity Metrics (Novel):**
-- **Yaw Change Smoothness**: Measures rotation smoothness
-- **Trajectory Curvature**: Measures path smoothness
-- **Stop Reasonableness**: Evaluates stopping decision quality
+- **Continuous Success Ratio (CSR)**: Measures the ratio of successful navigation steps along the trajectory
+- **Integrated Collision Penalty (ICP)**: Penalizes collisions weighted by their severity and frequency
+- **Path Smoothness (PS)**: Evaluates the smoothness of the navigation path
 
 ---
 
@@ -1040,31 +1041,20 @@ python scripts/vlm_server_multigpu.py \
 
 
 
-## ⭐ Experiment results
-
-#### 1）Comparison of different models on VLN and Nogoal-Nav tasks on SAGE-Bench.
-
-![image-20250925024243483](image-20250925024243483.png)
-
-![Comparison among different versions](./src/results1.png)
-
-#### 2）Impact of the number of scenes and samples on model performance.
-
-![Comparison among different versions](./src/results2.png)
-
-#### 3）Visualization case study of navigation natural continuity.
-![Comparison among different versions](./src/results3.png)
-<a id="Cition"></a>
-
-#### 4）Results under Different Evaluation Slice.
-
-![image-20250925024445878](./src/results4.png)
-
-
-
 ## 📦 Cition
 
 If you find this work useful for your research, please cite our paper:
+
 ```bibtex
+
+@misc{miao2025physicallyexecutable3dgaussian,
+      title={Towards Physically Executable 3D Gaussian for Embodied Navigation}, 
+      author={Bingchen Miao and Rong Wei and Zhiqi Ge and Xiaoquan sun and Shiqi Gao and Jingzhe Zhu and Renhan Wang and Siliang Tang and Jun Xiao and Rui Tang and Juncheng Li},
+      year={2025},
+      eprint={2510.21307},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.21307}, 
+}
 
 ```

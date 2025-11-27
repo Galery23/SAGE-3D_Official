@@ -484,12 +484,12 @@ def default_measures(episode: Dict) -> MeasureManager:
     mm.register(PathLength(episode, mm))      # Path length
     mm.register(SPL(episode, mm))             # SPL - Success weighted by Path Length
     mm.register(NavigationError(episode, mm)) # Final navigation error
+    mm.register(CollisionCount(episode, mm))            # CR - Collision Count (total collisions)
 
     # 3DGS VLN continuous advantage metrics
     mm.register(ContinuousSuccessRatio(episode, mm))    # CSR - Continuous Success Ratio
     mm.register(IntegratedCollisionPenalty(episode, mm)) # ICP - Integrated Collision Penalty
     mm.register(PathSmoothness(episode, mm))            # PS - Path Smoothness
-    mm.register(CollisionCount(episode, mm))            # CR - Collision Count (total collisions)
 
     return mm
 
