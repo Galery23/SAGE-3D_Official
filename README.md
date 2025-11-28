@@ -1,10 +1,40 @@
 <h1 align="center" style="line-height: 40px;">
   Towards Physically Executable 3D Gaussian for Embodied Navigation
 </h1>
+<p align="center">
+  <!-- arxiv badges -->
+  <a href="https://arxiv.org/abs/2510.21307">
+    <img src="https://img.shields.io/badge/Paper-red?style=flat&logo=arxiv">
+  </a>
+  <!-- Project Page -->
+  <a href="https://omni-bench.github.io/">
+    <img src="https://img.shields.io/badge/Project Page-white?style=flat&logo=google-docs">
+  </a>
+  <!-- Github -->
+  <a href="https://github.com/Galery23/SAGE-3D_Official">
+    <img src="https://img.shields.io/badge/Code-black?style=flat&logo=github">
+  </a>
+  <!-- HuggingFace -->
+  <a href="https://huggingface.co/papers/2411.10943">
+    <img src="https://img.shields.io/badge/-%F0%9F%A4%97%20Hugging_Face-orange?style=flat"/>
+  </a>
+  <!-- Last commit -->
+  <img src="https://img.shields.io/github/last-commit/Galery23/SAGE-3D_Official?color=green">
+</p>
+
+<div align="center">
+Bingchen Miao<sup>1,2</sup>, Rong Wei<sup>2</sup>, Zhiqi Ge<sup>1</sup>, Xiaoquan Sun<sup>2,3</sup>, Shiqi Gao<sup>1</sup>, Jingzhe Zhu<sup>1</sup>
+
+ Renhan Wang<sup>2</sup>, Siliang Tang<sup>1</sup>, Jun Xiao<sup>2</sup>, Rui Tang<sup>2</sup>, Juncheng Li <sup>1</sup>*
+
+<sup>1</sup>Zhejiang University, <sup>2</sup>Manycore Tech Inc., <sup>3</sup>Huazhong University of Science and Technology
+
+\*Corresponding author: junchengli@zju.edu.cn.
+</div>
 
 
 
-## 💾 Introduction
+## 📖 Introduction
 Welcome to the official repository for the paper "Towards Physically Executable 3D Gaussian for Embodied Navigation". In this work, we introduce SAGE-3D, a new paradigm that upgrades 3D Gaussian Splatting (3DGS) into an executable, semantically and physically aligned environment foundation for Vision-and-Language Navigation (VLN). While current VLN research primarily follows a sim-to-real paradigm and leverages 3DGS for photorealistic rendering, existing methods lack fine-grained semantics and physical executability. SAGE-3D addresses these limitations with two key components:
 1. **Object-Level Semantic Grounding** – enhancing 3DGS with dense, fine-grained object-level annotations.
 2. **Physics-Aware Execution Jointing** – embedding collision bodies into 3DGS and enabling rich physical interaction interfaces.
@@ -15,14 +45,6 @@ We also release two valuable resources to support research in this domain:
 2. **SAGE-Bench** – the first VLN benchmark built on 3DGS, containing 2 million trajectory–instruction pairs, a hierarchical instruction generation pipeline, and three novel navigation-continuous evaluation metrics.
 
 ![Introduction](./src/Introduction.png)
-
-
-
- ## ⭐ Contribution
-
-1. **InteriorGS**: A large-scale dataset of 1k fully furnished indoor 3DGS reconstructions with dense object-level annotations.
-2. **SAGE-3D**: A new paradigm that augments 3DGS with semantic granularity and physical validity, making it an executable environment foundation.
-3. **SAGE-Bench**: The first VLN benchmark on 3DGS, with fine-grained semantics, accurate per-object physics, and rich interfaces for robot embodiments. It contains 2M new trajectory–instruction pairs and 554K detailed collision bodies.
 
 
 
@@ -40,7 +62,7 @@ We also release two valuable resources to support research in this domain:
 <a id="new"></a>
 
 ## 🔥 News
-- [2025.11.28] We have released the Benchmark Environment and Dataset.
+- [2025.11.28] We have released the Benchmark Environment, Dataset, and Data Construction Pipeline.
 - [2025.10.24] We have released our [Paper](https://arxiv.org/abs/2510.21307) on arxiv.
 
 
@@ -66,7 +88,7 @@ Current Vision-Language Navigation (VLN) follows the sim-to-real paradigm, where
 
 <a id="sage-3d-scene-data-preparation"></a>
 
-## 🏗️ SAGE-3D Scene Data Preparation
+## 🔖 SAGE-3D Scene Data Preparation
 
 Before constructing VLN data, you need to prepare the SAGE-3D scene data by converting InteriorGS 3D Gaussian Splatting scenes into USD format compatible with Isaac Sim. This section describes the complete pipeline from compressed PLY files to USDA scene files.
 
@@ -158,8 +180,6 @@ done
 
 **Output:** USDZ files compatible with Omniverse and Isaac Sim 5.0+
 
-**Note:** The USDZ format uses an extension of the UsdVolVolume Schema specifically designed for 3D Gaussian rendering in Isaac Sim.
-
 ### Step 4: Download Collision Mesh Data
 
 Download pre-built collision meshes for each scene:
@@ -208,66 +228,7 @@ python Code/benchmark/scene_data/sage3d_usda_builder.py \
 **Output:**
 - `{scene_id}.usda`: Complete scene files ready for Isaac Sim with integrated collision bodies
 
----
 
-### Complete Scene Preparation Example
-
-Here's a complete example for preparing SAGE-3D scenes:
-
-```bash
-# ============================================================
-# Step 1: Download InteriorGS Data
-# ============================================================
-# Download from https://huggingface.co/datasets/spatialverse/InteriorGS
-# Extract to /path/to/InteriorGS
-
-# ============================================================
-# Step 2: Decompress PLY Files
-# ============================================================
-mkdir -p /path/to/ply_decompressed
-
-for scene_dir in /path/to/InteriorGS/*/; do
-    scene_id=$(basename "$scene_dir")
-    echo "Processing ${scene_id}..."
-    splat-transform \
-        "$scene_dir/3dgs_compressed.ply" \
-        "/path/to/ply_decompressed/${scene_id}.ply"
-done
-
-# ============================================================
-# Step 3: Convert to USDZ
-# ============================================================
-mkdir -p /path/to/usdz_output
-
-for ply_file in /path/to/ply_decompressed/*.ply; do
-    scene_id=$(basename "$ply_file" .ply)
-    echo "Converting ${scene_id} to USDZ..."
-    python -m threedgrut.export.scripts.ply_to_usd \
-        "$ply_file" \
-        --output_file "/path/to/usdz_output/${scene_id}.usdz"
-done
-
-# ============================================================
-# Step 4: Download Collision Meshes
-# ============================================================
-# Download from https://huggingface.co/datasets/spatialverse/SAGE-3D_Collision_Mesh
-# Extract to /path/to/collision_meshes
-
-# ============================================================
-# Step 5: Build USDA Files
-# ============================================================
-python Code/benchmark/scene_data/sage3d_usda_builder.py \
-    --usdz-dir /path/to/usdz_output \
-    --out-dir /path/to/usda_output \
-    --template Data/template.usda \
-    --usdz-path-template "/path/to/usdz_output/{scene_id}.usdz[gauss.usda]" \
-    --collision-path-template "/path/to/collision_meshes/{scene_id}/{scene_id}_collision.usd" \
-    --overwrite
-
-echo "Scene preparation complete! USDA files are ready at /path/to/usda_output"
-```
-
-**Note:** The prepared USDA files will be used in both VLN data construction (for rendering training images) and benchmark evaluation (for testing navigation models).
 
 
 
@@ -277,7 +238,7 @@ echo "Scene preparation complete! USDA files are ready at /path/to/usda_output"
 
 This section describes the complete pipeline for constructing VLN training and testing data from InteriorGS 3D Gaussian Splatting scenes. The pipeline transforms 3DGS scenes into a complete VLN dataset with trajectories, natural language instructions, and training data (RGB images + action sequences).
 
-**Prerequisites:** Complete the [SAGE-3D Scene Data Preparation](#-sage-3d-scene-data-preparation) first to generate USDA scene files.
+**Prerequisites:** Complete the [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation) first to generate USDA scene files.
 
 ### Environment Setup
 
@@ -287,7 +248,7 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
-### Stage 1: Scene Preprocessing
+### Step 1: Scene Preprocessing
 
 #### 1.1 InteriorGS → 2D Semantic Map
 
@@ -361,7 +322,7 @@ python Code/data_pipeline/interiorgs_processing/scene_text_generator.py \
 
 ---
 
-### Stage 2: VLN Trajectory Generation
+### Step 2: VLN Trajectory Generation
 
 #### 2.1 Generate 2D Trajectories with Instructions
 
@@ -461,7 +422,7 @@ python Code/data_pipeline/trajectory_generation/trajectory_statistics.py \
 
 ---
 
-### Stage 3: Dataset Splitting and Training Data Construction
+### Step 3: Dataset Splitting and Training Data Construction
 
 #### 3.1 Split Data into Train/Val/Test Sets
 
@@ -487,6 +448,7 @@ python Code/data_pipeline/data_split/trajectory_split_domain_aware.py \
 - `--random-seed`: (Optional) Random seed for reproducibility (default: 42)
 
 **Output:**
+
 - `GSNav-Bench_Train_Split_Domain.json`: Training set mapping
 - `GSNav-Bench_Val_Split_Domain.json`: Validation set mapping
 - `GSNav-Bench_Test_Scene_Unseen_Split_Domain.json`: Scene-unseen test mapping
@@ -519,7 +481,7 @@ python Code/data_pipeline/data_split/benchmark_data_splitter.py \
 **Output:**
 - Training, validation, and test set trajectories organized by split type
 
-#### 3.2 Generate Training Data (Action Groundtruth)
+#### 3.2 Generate Actions
 
 Generate action sequences from trajectories:
 
@@ -527,7 +489,6 @@ Generate action sequences from trajectories:
 python Code/data_pipeline/training_data_construction/generate_actions.py \
     --input-dir /path/to/train/trajectories \
     --output-dir /path/to/output/actions \
-    --limit 5
 ```
 
 **Parameters:**
@@ -546,7 +507,7 @@ python Code/data_pipeline/training_data_construction/generate_actions.py \
 **Output:**
 - `{scene_id}/{trajectory_id}_action.json`: Action sequences with sampled waypoints
 
-#### 3.3 Generate Training Data (RGB Images)
+#### 3.3 Capture RGB Images
 
 Render RGB images at trajectory waypoints using Isaac Sim. This step requires Isaac Sim to be installed.
 
@@ -604,148 +565,6 @@ Render RGB images at trajectory waypoints using Isaac Sim. This step requires Is
 - `{scene_id}/{trajectory_id}/frames/`: RGB images at each waypoint
 - `{scene_id}/{trajectory_id}/metadata.json`: Image metadata and camera parameters
 
-#### 3.4 Create NaVILA Training Dataset
-
-Convert action and image data into NaVILA training format:
-
-```bash
-python Code/data_pipeline/training_data_construction/create_navila_dataset.py \
-    --actions-dir /path/to/actions \
-    --images-dir /path/to/images \
-    --output-dir /path/to/output/navila_dataset \
-    --max-scenes 5 \
-    --samples-per-part 1000
-```
-
-**Parameters:**
-- `--actions-dir`: Directory containing action groundtruth
-- `--images-dir`: Directory containing rendered images
-- `--output-dir`: Output directory for NaVILA format dataset
-- `--max-scenes`: (Optional) Limit number of scenes to process (for testing)
-- `--samples-per-part`: (Optional) Number of samples per output file (default: 10000)
-
-**Output:**
-- `navila_train_part_{N}.json`: Training data in NaVILA format (one file per part)
-- `navila_train_statistics.json`: Dataset statistics (sample counts, action distribution, etc.)
-
----
-
-### Complete Pipeline Example
-
-Here's a complete example running the full data construction pipeline:
-
-```bash
-# ============================================================
-# Stage 1: Scene Preprocessing
-# ============================================================
-
-# 1.1 Generate 2D Semantic Maps
-cd /path/to/SAGE-3D
-python Code/data_pipeline/interiorgs_processing/semantic_map_builder.py \
-    --input-root /path/to/InteriorGS \
-    --output-root /path/to/semantic_maps \
-    --max-scenes 5 \
-    --overwrite
-
-# 1.2 Generate Physical Maps
-python Code/data_pipeline/interiorgs_processing/physical_map_converter.py \
-    --src-root /path/to/InteriorGS \
-    --dst-root /path/to/physical_maps \
-    --overwrite
-
-# 1.3 Generate Scene Text Descriptions
-python Code/data_pipeline/interiorgs_processing/scene_text_generator.py \
-    --physical-map-root /path/to/physical_maps \
-    --output-root /path/to/scene_text \
-    --prompt-file prompts/prompt_phy_to_sem.json \
-    --api-base https://api.openai.com/v1 \
-    --model gpt-4o-mini \
-    --api-key $OPENAI_API_KEY
-
-# ============================================================
-# Stage 2: VLN Trajectory Generation
-# ============================================================
-
-# 2.1 Generate 2D Trajectories with Instructions
-python Code/data_pipeline/trajectory_generation/vln_trajectory_generator.py \
-    --api-type openai \
-    --api-key $OPENAI_API_KEY \
-    --api-base https://api.openai.com/v1 \
-    --model gpt-4o-mini \
-    --min-trajs 100 \
-    --label-root /path/to/InteriorGS \
-    --scene-text-root /path/to/scene_text \
-    --sem-map-root /path/to/semantic_maps \
-    --endpoint-root /path/to/endpoints \
-    --traj-root /path/to/trajectories \
-    --prompt-pairwise prompts/trajectory_generation/prompt_pairwise_judgement.json \
-    --prompt-pairwise-batch prompts/trajectory_generation/prompt_pairwise_judgement_v2.json \
-    --prompt-traj-to-instr prompts/trajectory_generation/prompt_traj_to_instruction_v2.json
-
-# 2.2 Convert 2D to 3D Coordinates
-python Code/data_pipeline/trajectory_generation/trajectory_2d_to_3d.py \
-    --traj-root /path/to/trajectories \
-    --map-root /path/to/semantic_maps
-
-# 2.3 Merge Part-wise Trajectories
-python Code/data_pipeline/trajectory_generation/trajectory_merge.py \
-    --source-dir /path/to/trajectories \
-    --output-dir /path/to/trajectories_merged
-
-# 2.4 Compute Statistics (Optional)
-python Code/data_pipeline/trajectory_generation/trajectory_statistics.py \
-    --data-dir /path/to/trajectories_merged
-
-# ============================================================
-# Stage 3: Dataset Splitting and Training Data Construction
-# ============================================================
-
-# 3.1 Generate Domain-Aware Split Mapping
-python Code/data_pipeline/data_split/trajectory_split_domain_aware.py \
-    --traj-root /path/to/trajectories_merged \
-    --scene-type-file Data/scene_type.json \
-    --output-dir /path/to/split_mappings
-
-# 3.2 Extract Split Data
-python Code/data_pipeline/data_split/benchmark_data_splitter.py \
-    --original-data-dir /path/to/trajectories_merged \
-    --mapping-dir /path/to/split_mappings \
-    --train-dir /path/to/train \
-    --val-dir /path/to/val \
-    --scene-unseen-dir /path/to/test_scene_unseen \
-    --trajectory-unseen-dir /path/to/test_trajectory_unseen \
-    --instruction-unseen-dir /path/to/test_instruction_unseen
-
-# 3.3 Generate Action Groundtruth
-python Code/data_pipeline/training_data_construction/generate_actions.py \
-    --input-dir /path/to/train \
-    --output-dir /path/to/actions \
-    --limit 5
-
-# 3.4 Render RGB Images (requires Isaac Sim)
-/path/to/isaac-sim/python.sh \
-    Code/data_pipeline/training_data_construction/generate_images.py \
-    --input-dir /path/to/train \
-    --usd-root /path/to/InteriorGS_usda \
-    --output-dir /path/to/images \
-    --action-root /path/to/actions \
-    --max-trajectories 50
-
-# 3.5 Create NaVILA Training Dataset
-python Code/data_pipeline/training_data_construction/create_navila_dataset.py \
-    --actions-dir /path/to/actions \
-    --images-dir /path/to/images \
-    --output-dir /path/to/navila_dataset \
-    --max-scenes 5 \
-    --samples-per-part 1000
-```
-
-**Notes:**
-- Replace `/path/to/...` with your actual data paths
-- Set `$OPENAI_API_KEY` environment variable for LLM-based generation
-- For distributed image generation, run multiple instances with different `--instance-id`
-- Adjust `--max-scenes`, `--limit`, and `--max-trajectories` based on your testing needs
-
 
 
 <a id="sage-bench-evaluation"></a>
@@ -754,30 +573,21 @@ python Code/data_pipeline/training_data_construction/create_navila_dataset.py \
 
 This section describes how to set up the SAGE-Bench evaluation environment and run benchmark tests on VLN models including NaVILA and various MLLMs.
 
-**Prerequisites:** Complete the [SAGE-3D Scene Data Preparation](#-sage-3d-scene-data-preparation) to generate USDA scene files before running benchmark tests.
+**Prerequisites:** Complete the [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation) to generate USDA scene files before running benchmark tests.
 
 ### Environment Setup
 
 **Requirements:**
-- Isaac Sim (for physics simulation and rendering) - Version 4.1+ recommended
+- Isaac Sim (for physics simulation and rendering) - **Version 5.0+**
 - NVIDIA GPU with at least 16GB VRAM (24GB+ recommended for MLLMs)
 - Python 3.8+
 - CUDA-enabled PyTorch
 - Prepared USDA scene files (from Scene Data Preparation step)
 
-**Installation:**
-
-```bash
-# Install Isaac Sim (follow official NVIDIA Isaac Sim installation guide)
-# Download from: https://developer.nvidia.com/isaac-sim
-
-# Install benchmark dependencies
-pip install -r requirements.txt
-```
 
 ---
 
-### Stage 1: Model Server Setup
+### Step 1: Model Server Setup
 
 SAGE-Bench supports multiple VLN models through a server-client architecture. You need to start a model server before running the benchmark.
 
@@ -852,7 +662,7 @@ python Code/benchmark/environment_evaluation/evaluation_model/MLLM/mllm_server.p
 
 ---
 
-### Stage 2: Run Benchmark Tests
+### Step 2: Run Benchmark Tests
 
 SAGE-Bench supports three types of navigation tasks:
 
@@ -896,11 +706,6 @@ Test models on low-level control and kinematic evaluation:
     --vlm-port 54321
 ```
 
-**Low-Level Instructions Include:**
-- Primitive actions (turn left/right, move forward)
-- Single-step navigation goals
-- Simple spatial references
-
 #### No-Goal Navigation Test
 
 Test exploration and collision avoidance without explicit goals:
@@ -918,16 +723,12 @@ Test exploration and collision avoidance without explicit goals:
     --vlm-port 54321
 ```
 
-**No-Goal Metrics:**
-- Collision Rate (CR)
-- Exploration Coverage
-- Navigation Safety
-
 ---
 
 ### Benchmark Parameters
 
 **Common Parameters:**
+
 - `--scene_usd_path`: Directory containing USDA scene files
 - `--batch_test_dir`: Directory containing test trajectory data
 - `--map_path`: Directory containing 2D semantic maps (for collision detection)
@@ -949,31 +750,6 @@ Test exploration and collision avoidance without explicit goals:
 - `{scene_id}/{episode_id}/measurements/{episode_id}.json`: Episode metrics
 - `{scene_id}/{episode_id}/trajectory_visualization_{scene_id}_{episode_id}.png`: Trajectory visualization
 - `aggregate_results.json`: Aggregated metrics across all episodes
-
----
-
-### Evaluation Metrics
-
-SAGE-Bench provides comprehensive evaluation metrics:
-
-**Navigation Success Metrics:**
-- **Success Rate (SR)**: Percentage of episodes reaching the goal
-- **Success weighted by Path Length (SPL)**: SR weighted by path efficiency
-- **Oracle Success Rate (OSR)**: Success if agent gets close to goal at any point
-
-**Navigation Quality Metrics:**
-- **Navigation Error (NE)**: Final distance to goal
-- **Path Length (PL)**: Total distance traveled
-- **Oracle Path Length (OPL)**: Path length at closest approach to goal
-
-**Safety Metrics:**
-- **Collision Rate (CR)**: Number of collisions per episode
-- **Collision-Free Success Rate**: Success without collisions
-
-**Navigation Continuity Metrics (Novel):**
-- **Continuous Success Ratio (CSR)**: Measures the ratio of successful navigation steps along the trajectory
-- **Integrated Collision Penalty (ICP)**: Penalizes collisions weighted by their severity and frequency
-- **Path Smoothness (PS)**: Evaluates the smoothness of the navigation path
 
 ---
 
@@ -1042,9 +818,11 @@ python scripts/vlm_server_multigpu.py \
 
 
 
+
+
 <a id="citation"></a>
 
-## 📦 Cition
+## 📜 Cition
 
 If you find this work useful for your research, please cite our paper:
 
