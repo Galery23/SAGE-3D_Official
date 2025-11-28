@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/Paper-red?style=flat&logo=arxiv">
   </a>
   <!-- Project Page -->
-  <a href="https://omni-bench.github.io/">
+  <a href="https://sage-3d.github.io/">
     <img src="https://img.shields.io/badge/Project Page-white?style=flat&logo=google-docs">
   </a>
   <!-- Github -->
@@ -15,11 +15,9 @@
     <img src="https://img.shields.io/badge/Code-black?style=flat&logo=github">
   </a>
   <!-- HuggingFace -->
-  <a href="https://huggingface.co/papers/2411.10943">
+  <a href="">
     <img src="https://img.shields.io/badge/-%F0%9F%A4%97%20Hugging_Face-orange?style=flat"/>
   </a>
-  <!-- Last commit -->
-  <img src="https://img.shields.io/github/last-commit/Galery23/SAGE-3D_Official?color=green">
 </p>
 
 <div align="center">
@@ -611,11 +609,6 @@ python scripts/vlm_server_multigpu.py \
 - `--model_path`: Path to NaVILA model checkpoint
 - `--port`: Port number for server (default: 54321)
 - `--device`: Device to use (`cuda` or `cpu`)
-
-**Supported NaVILA Models:**
-- `navila-llama3-8b-8f`: NaVILA with LLaMA3-8B backbone, 8 frames
-- `navila-llama3-8b-4f`: NaVILA with LLaMA3-8B backbone, 4 frames
-- Other NaVILA variants trained on SAGE-Bench data
 
 #### MLLM Model Server
 
