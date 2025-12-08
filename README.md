@@ -339,8 +339,8 @@ python Code/data_pipeline/trajectory_generation/vln_trajectory_generator.py \
     --endpoint-root /path/to/output/endpoints \
     --traj-root /path/to/output/trajectories \
     --prompt-pairwise prompts/trajectory_generation/prompt_pairwise_judgement.json \
-    --prompt-pairwise-batch prompts/trajectory_generation/prompt_pairwise_judgement_v2.json \
-    --prompt-traj-to-instr prompts/trajectory_generation/prompt_traj_to_instruction_v2.json
+    --prompt-pairwise-batch prompts/trajectory_generation/prompt_pairwise_judgement_batch.json \
+    --prompt-traj-to-instr prompts/trajectory_generation/prompt_traj_to_instruction.json
 ```
 
 **Parameters:**

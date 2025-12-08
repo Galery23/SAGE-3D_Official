@@ -54,10 +54,10 @@ DEFAULT_PROMPT_PAIRWISE = Path(
     "prompts/trajectory_generation/prompt_pairwise_judgement.json"
 )
 DEFAULT_PROMPT_PAIRWISE_BATCH = Path(
-    "prompts/trajectory_generation/prompt_pairwise_judgement_v2.json"
+    "prompts/trajectory_generation/prompt_pairwise_judgement_batch.json"
 )
 DEFAULT_PROMPT_TRAJ_TO_INSTR = Path(
-    "prompts/trajectory_generation/prompt_traj_to_instruction_v2.json"
+    "prompts/trajectory_generation/prompt_traj_to_instruction.json"
 )
 
 # Navigation parameters
