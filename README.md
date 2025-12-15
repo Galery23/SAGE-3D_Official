@@ -69,7 +69,7 @@ We also release two valuable resources to support research in this domain:
 <a id="new"></a>
 
 ## 🔥 News
-- [2025.11.28] We have released the Benchmark Environment, Dataset, and Data Construction Pipeline.
+- [2025.12.15] We have released the Benchmark Environment, Dataset, and Data Construction Pipeline.
 - [2025.10.24] We have released our [Paper](https://arxiv.org/abs/2510.21307) on arxiv.
 
 
