@@ -10,15 +10,24 @@
   <a href="https://sage-3d.github.io/">
     <img src="https://img.shields.io/badge/Project Page-white?style=flat&logo=google-docs">
   </a>
-  <!-- Github -->
-  <a href="https://github.com/Galery23/SAGE-3D_Official">
-    <img src="https://img.shields.io/badge/Code-black?style=flat&logo=github">
+  <!-- HuggingFace -->
+  <a href="https://huggingface.co/datasets/spatialverse/InteriorGS">
+    <img src="https://img.shields.io/badge/-%F0%9F%A4%97%20InteriorGS-orange?style=flat"/>
   </a>
   <!-- HuggingFace -->
-  <a href="">
-    <img src="https://img.shields.io/badge/-%F0%9F%A4%97%20Hugging_Face-orange?style=flat"/>
+  <a href="https://huggingface.co/datasets/spatialverse/SAGE-3D_Collision_Mesh">
+    <img src="https://img.shields.io/badge/-%F0%9F%A4%97%20Collision_Mesh-orange?style=flat"/>
+  </a>
+  <!-- HuggingFace -->
+  <a href="https://huggingface.co/datasets/spatialverse/SAGE-3D_InteriorGS_usdz">
+    <img src="https://img.shields.io/badge/-%F0%9F%A4%97%20InteriorGS_usdz-orange?style=flat"/>
+  </a>
+  <!-- HuggingFace -->
+  <a href="https://huggingface.co/datasets/spatialverse/SAGE-3D_VLN_Data">
+    <img src="https://img.shields.io/badge/-%F0%9F%A4%97%20VLN_Data-orange?style=flat"/>
   </a>
 </p>
+
 
 <div align="center">
 Bingchen Miao<sup>1,2</sup>, Rong Wei<sup>2</sup>, Zhiqi Ge<sup>1</sup>, Xiaoquan Sun<sup>2,3</sup>, Shiqi Gao<sup>1</sup>, Jingzhe Zhu<sup>1</sup>
@@ -73,12 +82,7 @@ Current Vision-Language Navigation (VLN) follows the sim-to-real paradigm, where
 
 ![image-20250925024906302](./src/SAGE-3D.png)
 
-1. **Task Types**: 
-**VLN**: Takes text and assets as input, provides a concrete goal, and evaluates whether the agent correctly reaches the target location.
-**Nogoal-Nav**: Has no explicit target; the objective is to maximize environmental exploration to assess the agent’s understanding of the environment and the safety of its exploration policy. The test set consists of 100 scenes.
-2. **Instruction Level**: This axis measures the semantic and structural complexity of instructions. We define two tiers of instructions. **High‑level instructions** emphasize task semantics and human‑oriented intent, and comprise six categories: *Add Causality* (introducing causal objects or actions that make a trajectory contextually meaningful); *Scenario Driven* (embedding specific situational motives that make the destination a reasonable place for execution); *Relative Relationship* (distinguishing similar nearby targets via spatial relations such as “next to” or “opposite”); *Attribute‑based* (identifying a unique target using perceivable attributes like color, state, or contents); *Area‑based* (directing the agent toward a general functional area rather than a specific object). **Low‑level instructions** focus on control and kinematic evaluation, including primitive actions such as in‑place rotations or forward moves, and single‑goal navigation where the agent reaches a specific room, object, or area in one step.  
-2. **Scene Complexity**: Defined by asset density—scenes with more than 376 assets are labeled “many,” and those with fewer than 184 assets are labeled “few.”
-3. **Path Complexity**: Defined by path length—paths longer than 29.0 m are labeled “long,” and those shorter than 8.4 m are labeled “short.”
+Our SAGE-Bench includes a hierarchical instruction generation scheme, two major task types, two episode complexity categories, and three newly designed natural continuity metrics for navigation.
 
 ![Comparison among different versions](./src/SAGE-Bench.png)
 
@@ -88,7 +92,9 @@ Current Vision-Language Navigation (VLN) follows the sim-to-real paradigm, where
 
 ## 🔖 SAGE-3D Scene Data Preparation
 
-Before constructing VLN data, you need to prepare the SAGE-3D scene data by converting InteriorGS 3D Gaussian Splatting scenes into USD format compatible with Isaac Sim. This section describes the complete pipeline from compressed PLY files to USDA scene files.
+Before constructing VLN data, you need to prepare the SAGE-3D scene data by converting InteriorGS 3D Gaussian Splatting scenes into USDZ format compatible with Isaac Sim. This section describes the complete pipeline from compressed PLY files to USDA scene files.
+
+Additionally, we have prepared processed [USDZ data](https://huggingface.co/datasets/spatialverse/SAGE-3D_InteriorGS_usdz) for you, which can be immediately opened with IsaacSim 5.0 by generating the corresponding USDA data using our code.
 
 ### Pipeline Overview
 
@@ -116,9 +122,7 @@ pip install -e .
 
 ### Step 1: Download InteriorGS Data
 
-Download InteriorGS compressed PLY files from HuggingFace:
-
-**InteriorGS Dataset:** https://huggingface.co/datasets/spatialverse/InteriorGS
+Download **[InteriorGS](https://huggingface.co/datasets/spatialverse/InteriorGS)** compressed PLY files.
 
 Each scene contains a compressed 3D Gaussian Splatting file:
 ```
@@ -172,29 +176,28 @@ done
 
 **Tool:** [nv-tlabs/3dgrut](https://github.com/nv-tlabs/3dgrut)
 
-**Parameters:**
-- Input: Original PLY file
-- `--output_file`: Output USDZ file path
-
 **Output:** USDZ files compatible with Omniverse and Isaac Sim 5.0+
+
+Alternatively, you can use the processed [USDZ data](https://huggingface.co/datasets/spatialverse/SAGE-3D_InteriorGS_usdz) we provide.
+
 
 ### Step 4: Download Collision Mesh Data
 
-Download pre-built collision meshes for each scene:
-
-**SAGE-3D Collision Mesh Dataset:** https://huggingface.co/datasets/spatialverse/SAGE-3D_Collision_Mesh
+Download **[SAGE-3D Collision Mesh Dataset](https://huggingface.co/datasets/spatialverse/SAGE-3D_Collision_Mesh)** for each scene.
 
 The collision meshes are organized by scene ID:
 ```
-SAGE-3D_Collision_Mesh/
-├── 0001_839920/
-│   └── 0001_839920_collision.usd
-├── 0002_839921/
-│   └── 0002_839921_collision.usd
+Collision_Mesh/
+├── 839873/                    # Scene-specific collision data
+│   └── 839873_collision.usd   # Collision mesh in USD format
+├── 839874/
+│   └── 839874_collision.usd
+├── 839875/
+│   └── 839875_collision.usd
 └── ...
 ```
 
-These collision meshes enable accurate physics simulation and collision detection during navigation.
+These collision meshes enable accurate physics simulation and collision detection.
 
 ### Step 5: Build USDA Scene Files
 
@@ -221,7 +224,6 @@ python Code/benchmark/scene_data/sage3d_usda_builder.py \
 - `--usdz-path-template`: Template for USDZ reference path (use `{scene_id}` as placeholder)
 - `--collision-path-template`: Template for collision payload path (use `{scene_id}` as placeholder)
 - `--overwrite`: Overwrite existing USDA files
-- `--limit`: (Optional) Limit number of files to generate (for testing)
 
 **Output:**
 - `{scene_id}.usda`: Complete scene files ready for Isaac Sim with integrated collision bodies
@@ -236,7 +238,7 @@ python Code/benchmark/scene_data/sage3d_usda_builder.py \
 
 This section describes the complete pipeline for constructing VLN training and testing data from InteriorGS 3D Gaussian Splatting scenes. The pipeline transforms 3DGS scenes into a complete VLN dataset with trajectories, natural language instructions, and training data (RGB images + action sequences).
 
-**Prerequisites:** Complete the [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation) first to generate USDA scene files.
+**Prerequisites:** Complete the [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation) first to generate USDA scene files. And download [InteriorGS data](https://huggingface.co/datasets/spatialverse/InteriorGS) to obtain manually annotated object level data (labels.json、occupancy.json、occupancy.png).
 
 ### Environment Setup
 
@@ -257,18 +259,15 @@ cd /path/to/SAGE-3D
 
 python Code/data_pipeline/interiorgs_processing/semantic_map_builder.py \
     --input-root /path/to/InteriorGS \
-    --output-root /path/to/output/semantic_maps \
-    --max-scenes 5 \
-    --overwrite
+    --output-root /path/to/output/semantic_maps
 ```
 
 **Parameters:**
 - `--input-root`: Directory containing InteriorGS scene folders (each with `labels.json`, `occupancy.json`, `occupancy.png`)
 - `--output-root`: Output directory for generated 2D semantic maps
-- `--max-scenes`: (Optional) Limit the number of scenes to process for testing
-- `--overwrite`: Overwrite existing semantic map files
 
 **Output:**
+
 - `2D_Semantic_Map_{scene_id}_Complete.json`: Semantic map with object labels and positions
 - `2D_Semantic_Map_{scene_id}_Complete.png`: Visualization of the semantic map
 
@@ -281,14 +280,12 @@ Convert InteriorGS scenes into textual scene descriptions for instruction genera
 ```bash
 python Code/data_pipeline/interiorgs_processing/physical_map_converter.py \
     --src-root /path/to/InteriorGS \
-    --dst-root /path/to/output/physical_maps \
-    --overwrite
+    --dst-root /path/to/output/physical_maps
 ```
 
 **Parameters:**
 - `--src-root`: InteriorGS dataset root directory
 - `--dst-root`: Output directory for physical maps
-- `--overwrite`: Overwrite existing files
 
 **Output:**
 - `{scene_id}/scene.json`: Bounding box coordinates for each object in the scene
@@ -301,19 +298,18 @@ python Code/data_pipeline/interiorgs_processing/scene_text_generator.py \
     --output-root /path/to/output/scene_text \
     --prompt-file prompts/prompt_phy_to_sem.json \
     --api-base https://api.openai.com/v1 \
-    --model gpt-4o-mini \
+    --model gpt-4o \
     --api-key $OPENAI_API_KEY
 ```
 
 **Parameters:**
+
 - `--physical-map-root`: Directory containing physical map files
 - `--output-root`: Output directory for scene text descriptions
 - `--prompt-file`: JSON file containing prompt template
 - `--api-base`: OpenAI API endpoint URL
 - `--model`: LLM model name
-- `--api-key`: OpenAI API key (or use environment variable `$OPENAI_API_KEY`)
-- `--workers`: (Optional) Number of parallel workers (default: 8)
-- `--temperature`: (Optional) LLM sampling temperature (default: 0.7)
+- `--api-key`: OpenAI API key
 
 **Output:**
 - `{scene_id}_semantic.txt`: Natural language description of scene layout and objects
@@ -331,7 +327,7 @@ python Code/data_pipeline/trajectory_generation/vln_trajectory_generator.py \
     --api-type openai \
     --api-key YOUR_OPENAI_API_KEY \
     --api-base https://api.openai.com/v1 \
-    --model gpt-4o-mini \
+    --model gpt-4o \
     --min-trajs 100 \
     --label-root /path/to/InteriorGS \
     --scene-text-root /path/to/scene_text \
@@ -344,7 +340,7 @@ python Code/data_pipeline/trajectory_generation/vln_trajectory_generator.py \
 ```
 
 **Parameters:**
-- `--api-type`: API client type (`openai` or `company`)
+- `--api-type`: API client type
 - `--api-key`: API key for LLM service
 - `--api-base`: API endpoint URL
 - `--model`: LLM model name
@@ -357,9 +353,6 @@ python Code/data_pipeline/trajectory_generation/vln_trajectory_generator.py \
 - `--prompt-pairwise`: Path to pairwise judgment prompt JSON
 - `--prompt-pairwise-batch`: Path to batch pairwise judgment prompt JSON
 - `--prompt-traj-to-instr`: Path to trajectory-to-instruction prompt JSON
-- `--only`: (Optional) Process only specific scene ID (e.g., `0001_839920`)
-- `--judge-workers`: (Optional) Number of parallel workers for reachability judgment (default: 32)
-- `--instr-workers`: (Optional) Number of parallel workers for instruction generation (default: 32)
 
 **Output:**
 - `endpoints_{scene_id}.json`: Sampled start/end point pairs
@@ -376,13 +369,12 @@ python Code/data_pipeline/trajectory_generation/trajectory_2d_to_3d.py \
 ```
 
 **Parameters:**
+
 - `--traj-root`: Directory containing 2D trajectory files
 - `--map-root`: Directory containing semantic map metadata (with coordinate bounds)
-- `--flip-x`: (Optional) Apply horizontal mirroring (default: True)
-- `--flip-y`: (Optional) Apply vertical mirroring (default: True)
-- `--negate-xy`: (Optional) Negate coordinates after flipping (default: True)
 
 **Output:**
+
 - Trajectory files updated with 3D coordinates in-place
 
 #### 2.3 Merge Part-wise Trajectory Data
@@ -398,9 +390,9 @@ python Code/data_pipeline/trajectory_generation/trajectory_merge.py \
 **Parameters:**
 - `--source-dir`: Directory containing part-wise trajectory files
 - `--output-dir`: Output directory for merged trajectories
-- `--overwrite`: (Optional) Overwrite existing merged files
 
 **Output:**
+
 - `{scene_id}/trajectories_overall_merged.json`: Merged trajectory data per scene
 
 #### 2.4 Compute Trajectory Statistics
@@ -422,7 +414,9 @@ python Code/data_pipeline/trajectory_generation/trajectory_statistics.py \
 
 ### Step 3: Dataset Splitting and Training Data Construction
 
-#### 3.1 Split Data into Train/Val/Test Sets
+#### 3.1 Split Data into Train/Val/Test Sets (simulation)
+
+Note: Our [test data](https://huggingface.co/datasets/spatialverse/SAGE-3D_VLN_Data) has undergone further manual screening to ensure data quality.
 
 **Step 1: Generate Domain-Aware Split Mapping**
 
@@ -439,11 +433,6 @@ python Code/data_pipeline/data_split/trajectory_split_domain_aware.py \
 - `--traj-root`: Directory containing merged trajectories
 - `--scene-type-file`: JSON file mapping scene IDs to scene types
 - `--output-dir`: Output directory for split mapping files
-- `--target-scenes-per-test`: (Optional) Target number of scenes per test split (default: 15)
-- `--target-pairs-per-test`: (Optional) Target number of trajectory pairs per test split (default: 1000)
-- `--val-scenes`: (Optional) Number of validation scenes (default: 20)
-- `--val-pairs`: (Optional) Number of validation trajectory pairs (default: 50000)
-- `--random-seed`: (Optional) Random seed for reproducibility (default: 42)
 
 **Output:**
 
@@ -474,7 +463,6 @@ python Code/data_pipeline/data_split/benchmark_data_splitter.py \
 - `--scene-unseen-dir`: Output directory for scene-unseen test set
 - `--trajectory-unseen-dir`: Output directory for trajectory-unseen test set
 - `--instruction-unseen-dir`: Output directory for instruction-unseen test set
-- `--rename-files`: (Optional) Add split-specific prefixes to output filenames
 
 **Output:**
 - Training, validation, and test set trajectories organized by split type
@@ -492,24 +480,15 @@ python Code/data_pipeline/training_data_construction/generate_actions.py \
 **Parameters:**
 - `--input-dir`: Directory containing training trajectory files
 - `--output-dir`: Output directory for action groundtruth
-- `--config-preset`: (Optional) Action configuration preset (`vlnce`, `navila_small`, `navila_large`, `custom_small`, default: `vlnce`)
-- `--max-workers`: (Optional) Number of parallel workers (default: CPU count)
-- `--limit`: (Optional) Limit number of trajectories to process (useful for testing)
-
-**Configuration Presets:**
-- `navila_small`: 0.35m forward, 30° turn, max 50 actions
-- `vlnce`: 0.25m forward, 15° turn, max 50 actions
-- `navila_large`: 0.75m forward, 15° turn, max 30 actions
-- `custom_small`: 0.50m forward, 30° turn, max 60 actions
 
 **Output:**
 - `{scene_id}/{trajectory_id}_action.json`: Action sequences with sampled waypoints
 
 #### 3.3 Capture RGB Images
 
-Render RGB images at trajectory waypoints using Isaac Sim. This step requires Isaac Sim to be installed.
+Render RGB images at trajectory waypoints using Isaac Sim. This step requires Isaac Sim (5.0+) to be installed.
 
-**Important:** Use Isaac Sim's Python interpreter to run this script:
+**Important:** Use Isaac Sim's (5.0+) Python interpreter to run this script:
 
 ```bash
 # Single instance
@@ -549,15 +528,12 @@ Render RGB images at trajectory waypoints using Isaac Sim. This step requires Is
 - `--output-dir`: Output directory for rendered images
 - `--action-root`: Directory containing action groundtruth (for waypoint synchronization)
 - `--max-trajectories`: (Optional) Limit trajectories per scene
-- `--force`: (Optional) Force reprocess even if already processed
 - `--instance-id`: (Optional) Instance ID for distributed processing (0-indexed)
 - `--total-instances`: (Optional) Total number of instances for distributed processing
 
 **Notes:**
-- Camera resolution: 1024×768
-- Camera height: 1.2m
-- FOV determined by focal length (8.0mm)
-- Image generation requires significant GPU resources; distributed processing is recommended
+- Camera resolution: default 1024×768 (can be modified)
+- Camera height: default 1.2m (can be modified)
 
 **Output:**
 - `{scene_id}/{trajectory_id}/frames/`: RGB images at each waypoint
@@ -569,18 +545,19 @@ Render RGB images at trajectory waypoints using Isaac Sim. This step requires Is
 
 ## 🎯 SAGE-Bench Evaluation
 
-This section describes how to set up the SAGE-Bench evaluation environment and run benchmark tests on VLN models including NaVILA and various MLLMs.
+This section describes how to set up the SAGE-Bench evaluation environment and run benchmark tests on VLN models and various MLLMs.
 
-**Prerequisites:** Complete the [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation) to generate USDA scene files before running benchmark tests.
+Download **[SAGE-3D VLN test data](https://huggingface.co/datasets/spatialverse/SAGE-3D_VLN_Data)**.
 
 ### Environment Setup
 
 **Requirements:**
+
 - Isaac Sim (for physics simulation and rendering) - **Version 5.0+**
 - NVIDIA GPU with at least 16GB VRAM (24GB+ recommended for MLLMs)
 - Python 3.8+
 - CUDA-enabled PyTorch
-- Prepared USDA scene files (from Scene Data Preparation step)
+- Prepared USDA scene files (from [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation))
 
 
 ---
@@ -590,6 +567,8 @@ This section describes how to set up the SAGE-Bench evaluation environment and r
 SAGE-Bench supports multiple VLN models through a server-client architecture. You need to start a model server before running the benchmark.
 
 #### NaVILA Model Server
+
+Please download the model weights and configuration related environment libraries from the [NaVILA](https://github.com/AnjieCheng/NaVILA) repository and [NaVILA-Bench](https://github.com/yang-zj1026/NaVILA-Bench) repository.
 
 **Activate Environment and Start Server:**
 
@@ -602,56 +581,40 @@ cd /path/to/NaVILA
 python scripts/vlm_server_multigpu.py \
     --model_path /path/to/navila-model \
     --port 54321 \
-    --device cuda
 ```
 
 **Parameters:**
 - `--model_path`: Path to NaVILA model checkpoint
 - `--port`: Port number for server (default: 54321)
-- `--device`: Device to use (`cuda` or `cpu`)
 
 #### MLLM Model Server
 
 Start an MLLM server for general vision-language models:
 
 ```bash
-# Activate MLLM environment
-conda activate mllm
-
 # Start Qwen2.5-VL server (example)
 python Code/benchmark/environment_evaluation/evaluation_model/MLLM/mllm_server.py \
     --model_type qwen-vl \
     --model_path /path/to/Qwen2.5-VL-7B-Instruct \
     --port 7777 \
-    --device cuda
 
 # Start LLaVA server (example)
 python Code/benchmark/environment_evaluation/evaluation_model/MLLM/mllm_server.py \
     --model_type llava \
     --model_path /path/to/llava-1.5-7b-hf \
     --port 7778 \
-    --device cuda
 
 # Start InternVL server (example)
 python Code/benchmark/environment_evaluation/evaluation_model/MLLM/mllm_server.py \
     --model_type internvl \
     --model_path /path/to/InternVL2-8B \
     --port 7779 \
-    --device cuda
 ```
 
 **Parameters:**
-- `--model_type`: Model type (`qwen-vl`, `llava`, `internvl`)
+- `--model_type`: Model type (`qwen-vl`, `llava`, `internvl`and so on)
 - `--model_path`: Path to model checkpoint or HuggingFace model ID
 - `--port`: Port number for server
-- `--host`: (Optional) Host address (default: `localhost`)
-- `--device`: Device to use (`cuda` or `cpu`)
-
-**Supported MLLM Models:**
-- **Qwen2.5-VL**: Alibaba's vision-language model (e.g., `Qwen/Qwen2.5-VL-7B-Instruct`)
-- **LLaVA**: Open-source VLM (e.g., `llava-hf/llava-1.5-7b-hf`)
-- **InternVL**: OpenGVLab's vision-language model (e.g., `OpenGVLab/InternVL2-8B`)
-- **Custom Models**: Easily add new models by creating adapter classes
 
 ---
 
@@ -662,6 +625,8 @@ SAGE-Bench supports three types of navigation tasks:
 #### Standard VLN Test
 
 Test models on high-level vision-language navigation with instruction following:
+
+**Important:** Use Isaac Sim's (5.0+) Python interpreter to run this script
 
 ```bash
 # Use Isaac Sim's Python interpreter
@@ -686,6 +651,8 @@ Test models on high-level vision-language navigation with instruction following:
 
 Test models on low-level control and kinematic evaluation:
 
+**Important:** Use Isaac Sim's (5.0+) Python interpreter to run this script
+
 ```bash
 /path/to/isaac-sim/python.sh \
     Code/benchmark/environment_evaluation/run_benchmark.py \
@@ -702,6 +669,8 @@ Test models on low-level control and kinematic evaluation:
 #### No-Goal Navigation Test
 
 Test exploration and collision avoidance without explicit goals:
+
+**Important:** Use Isaac Sim's (5.0+) Python interpreter to run this script
 
 ```bash
 /path/to/isaac-sim/python.sh \
@@ -744,71 +713,6 @@ Test exploration and collision avoidance without explicit goals:
 - `{scene_id}/{episode_id}/trajectory_visualization_{scene_id}_{episode_id}.png`: Trajectory visualization
 - `aggregate_results.json`: Aggregated metrics across all episodes
 
----
-
-### Complete Testing Example
-
-Here's a complete example for testing NaVILA on all three task types:
-
-```bash
-# ============================================================
-# Prerequisites: Complete SAGE-3D Scene Data Preparation
-# ============================================================
-# Ensure you have prepared USDA scene files following the
-# SAGE-3D Scene Data Preparation section
-
-# ============================================================
-# Step 1: Start NaVILA Server (in separate terminal)
-# ============================================================
-conda activate navila-eval
-cd /path/to/NaVILA
-python scripts/vlm_server_multigpu.py \
-    --model_path /path/to/navila-model \
-    --port 54321 \
-    --device cuda
-
-# ============================================================
-# Step 2: Run Benchmark Tests
-# ============================================================
-
-# Standard VLN Test
-/path/to/isaac-sim/python.sh \
-    Code/benchmark/environment_evaluation/run_benchmark.py \
-    --scene_usd_path /path/to/InteriorGS_usda \
-    --batch_test_dir /path/to/test_data/vln \
-    --map_path /path/to/semantic_maps \
-    --output_root /path/to/results/vln \
-    --task-type vln \
-    --vlm-port 54321
-
-# Low-Level VLN Test
-/path/to/isaac-sim/python.sh \
-    Code/benchmark/environment_evaluation/run_benchmark.py \
-    --scene_usd_path /path/to/InteriorGS_usda \
-    --batch_test_dir /path/to/test_data/low_level \
-    --map_path /path/to/semantic_maps \
-    --output_root /path/to/results/low_level \
-    --task-type vln \
-    --vlm-port 54321
-
-# No-Goal Navigation Test
-/path/to/isaac-sim/python.sh \
-    Code/benchmark/environment_evaluation/run_benchmark.py \
-    --scene_usd_path /path/to/InteriorGS_usda \
-    --batch_test_dir /path/to/test_data/no_goal \
-    --map_path /path/to/semantic_maps \
-    --output_root /path/to/results/nogoal \
-    --task-type nogoalnav \
-    --vlm-port 54321
-```
-
-**Notes:**
-- Start the model server in a separate terminal before running tests
-- Use Isaac Sim's Python interpreter for benchmark execution
-- Results will be saved in the specified output directory
-- For distributed testing, run multiple instances with different `--instance-id`
-
-
 
 
 
@@ -820,7 +724,6 @@ python scripts/vlm_server_multigpu.py \
 If you find this work useful for your research, please cite our paper:
 
 ```bibtex
-
 @misc{miao2025physicallyexecutable3dgaussian,
       title={Towards Physically Executable 3D Gaussian for Embodied Navigation}, 
       author={Bingchen Miao and Rong Wei and Zhiqi Ge and Xiaoquan sun and Shiqi Gao and Jingzhe Zhu and Renhan Wang and Siliang Tang and Jun Xiao and Rui Tang and Juncheng Li},
@@ -830,5 +733,22 @@ If you find this work useful for your research, please cite our paper:
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2510.21307}, 
 }
+```
+
+Please also cite the InteriorGS dataset:
 
 ```
+@misc{InteriorGS2025,
+  title={InteriorGS: A 3D Gaussian Splatting Dataset of Semantically Labeled Indoor Scenes},
+  author={SpatialVerse Research Team, Manycore Tech Inc.},
+  year={2025},
+  howpublished={\url{https://huggingface.co/datasets/spatialverse/InteriorGS}}
+}
+
+```
+
+
+
+## **🤝 Acknowledgments**
+
+Format conversion was performed using NVIDIA's [3DGRUT library](https://github.com/nv-tlabs/3dgrut). We thank the NVIDIA Toronto AI Lab for developing and open-sourcing this excellent tool.
