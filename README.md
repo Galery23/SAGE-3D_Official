@@ -632,7 +632,7 @@ Download **[SAGE-3D VLN test data](https://huggingface.co/datasets/spatialverse/
 
 SAGE-Bench supports multiple VLN models through a server-client architecture. You need to start a model server before running the benchmark.
 
-#### NaVILA Model Server
+#### NaVILA Model Server (for example)
 
 Please download the model weights and configuration related environment libraries from the [NaVILA](https://github.com/AnjieCheng/NaVILA) repository and [NaVILA-Bench](https://github.com/yang-zj1026/NaVILA-Bench) repository.
 
