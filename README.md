@@ -1,5 +1,5 @@
 <h1 align="center" style="line-height: 40px;">
-  Towards Physically Executable 3D Gaussian for Embodied Navigation
+  Towards Physically Executable 3D Gaussian <br> for Embodied Navigation
 </h1>
 <p align="center">
   <!-- arxiv badges -->
