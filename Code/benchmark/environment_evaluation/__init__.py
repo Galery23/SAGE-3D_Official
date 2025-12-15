@@ -40,7 +40,7 @@ from .vlm_client_modular import (
     PREDEFINED_CONFIGS,
 )
 from .object_based_success import ObjectBasedSuccessEvaluator
-from .collision_detector_2d import SemanticMap2DCollisionDetector
+from .collision_detector import SemanticMap2DCollisionDetector
 
 __all__ = [
     # Episode adapter

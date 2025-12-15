@@ -59,6 +59,7 @@ We also release two valuable resources to support research in this domain:
 ## 📌 Contents
 - [News](#new)
 - [Overview](#Overview)
+- [Isaac Sim Setup](#isaac-sim-setup)
 - [SAGE-3D Scene Data Preparation](#sage-3d-scene-data-preparation)
 - [VLN Data Construction Pipeline](#vln-data-construction-pipeline)
 - [SAGE-Bench Evaluation](#sage-bench-evaluation)
@@ -85,6 +86,71 @@ Current Vision-Language Navigation (VLN) follows the sim-to-real paradigm, where
 Our SAGE-Bench includes a hierarchical instruction generation scheme, two major task types, two episode complexity categories, and three newly designed natural continuity metrics for navigation.
 
 ![Comparison among different versions](./src/SAGE-Bench.png)
+
+
+
+<a id="isaac-sim-setup"></a>
+
+## ⚙️ Isaac Sim Setup
+
+Many components of SAGE-3D require NVIDIA Isaac Sim's Python environment, including image sampling, benchmark testing, and scene rendering. Setting up Isaac Sim correctly is essential for running our pipeline.
+
+> **⚠️ Version Requirement: Isaac Sim 5.0+**  
+> SAGE-3D requires **Isaac Sim version 5.0 or above** as it is the first version to support USDZ format for 3D Gaussian Splatting rendering. Earlier versions are not compatible with our pipeline.
+
+### Quick Setup
+
+We use **Isaac Sim 5.0+** built from source for our experiments. Follow these steps to set up Isaac Sim:
+
+```bash
+# 1. Clone Isaac Sim repository
+git clone https://github.com/isaac-sim/IsaacSim.git
+cd IsaacSim
+git lfs install
+git lfs pull
+
+# 2. Build Isaac Sim
+# Linux
+./build.sh
+
+# Windows
+build.bat
+
+# 3. Run Isaac Sim
+# Linux (x86_64)
+cd _build/linux-x86_64/release
+./isaac-sim.sh
+
+# Windows
+cd _build/windows-x86_64/release
+isaac-sim.bat
+```
+
+**Important Notes:**
+- Ensure you have the required GPU drivers and CUDA toolkit installed
+- First-time startup may take several minutes to load extensions and shaders
+- For detailed build instructions, system requirements, and troubleshooting, please refer to the [official Isaac Sim repository](https://github.com/isaac-sim/IsaacSim)
+
+### Isaac Sim Python Interpreter
+
+Throughout this repository, when we refer to running scripts with Isaac Sim's Python interpreter, use:
+
+```bash
+# Linux
+/path/to/IsaacSim/_build/linux-x86_64/release/python.sh your_script.py
+
+# Windows
+/path/to/IsaacSim/_build/windows-x86_64/release/python.bat your_script.py
+```
+
+### Python Environment Reference
+
+For reproducibility, we provide the complete list of Python packages in our Isaac Sim environment:
+
+- **Requirements File**: [`Data/isaac_sim_requirements.txt`](Data/isaac_sim_requirements.txt)
+- **Documentation**: [`Data/Isaac_sim_requirements_README.md`](Data/Isaac_sim_requirements_README.md)
+
+> **⚠️ Important**: These requirements are for **reference only**. Do NOT install them directly into a standard Python environment. Isaac Sim comes with its own bundled Python environment with custom builds of PyTorch, USD, and other NVIDIA libraries. Please refer to the documentation file for detailed usage instructions.
 
 
 
@@ -751,4 +817,12 @@ Please also cite the InteriorGS dataset:
 
 ## **🤝 Acknowledgments**
 
-Format conversion was performed using NVIDIA's [3DGRUT library](https://github.com/nv-tlabs/3dgrut). We thank the NVIDIA Toronto AI Lab for developing and open-sourcing this excellent tool.
+We would like to thank the following open-source projects that made SAGE-3D possible:
+
+- **[NVIDIA Isaac Sim](https://github.com/isaac-sim/IsaacSim)**: For providing a powerful physics simulation and rendering platform that enables our benchmark evaluation and image generation pipeline.
+
+- **[nv-tlabs/3dgrut](https://github.com/nv-tlabs/3dgrut)**: For the excellent PLY to USDZ conversion tools that enable 3D Gaussian Splatting rendering in Isaac Sim. We thank the NVIDIA Toronto AI Lab for developing and open-sourcing this tool.
+
+- **[playcanvas/splat-transform](https://github.com/playcanvas/splat-transform)**: For the compressed PLY decompression utility that allows us to process InteriorGS scenes efficiently.
+
+These tools are essential components of our data processing and evaluation pipeline.

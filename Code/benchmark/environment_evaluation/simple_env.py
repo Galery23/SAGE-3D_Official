@@ -32,10 +32,10 @@ except Exception:
 
 # Import 2D semantic map collision detector
 try:
-    from .collision_detector_2d import SemanticMap2DCollisionDetector
+    from .collision_detector import SemanticMap2DCollisionDetector
 except ImportError:
     try:
-        from collision_detector_2d import SemanticMap2DCollisionDetector
+        from collision_detector import SemanticMap2DCollisionDetector
     except ImportError:
         print("[WARNING] Cannot import SemanticMap2DCollisionDetector, 2D semantic map collision detection will be disabled")
         SemanticMap2DCollisionDetector = None
@@ -89,7 +89,7 @@ class SimpleVLNEnv:
         self._map_json_path = map_json_path  # Save for later initialization
         # Object-based success evaluation related attributes
         self.semantic_map_path = map_json_path  # For object-based success evaluation
-        self.collision_detector_2d = None
+        self.collision_detector = None
         
         # Start Isaac Sim (before setting log function)
         self._init_isaac_sim()
@@ -133,19 +133,19 @@ class SimpleVLNEnv:
         if SemanticMap2DCollisionDetector is not None and map_json_path and os.path.exists(map_json_path):
             try:
                 self._log(f"[COLLISION_2D] Initializing 2D semantic map collision detector...")
-                self.collision_detector_2d = SemanticMap2DCollisionDetector(
+                self.collision_detector = SemanticMap2DCollisionDetector(
                     map_json_path, 
                     robot_radius_m=0.08,  # Smaller robot radius for finer movement
                     scale=0.05  # Consistent with A* algorithm
                 )
                 self._log(f"[COLLISION_2D] ✓ Successfully loaded 2D semantic map collision detector: {map_json_path}")
-                collision_info = self.collision_detector_2d.get_collision_info()
+                collision_info = self.collision_detector.get_collision_info()
                 self._log(f"[COLLISION_2D] ✓ Map info: obstacle pixels {collision_info['obstacle_pixels']}/{collision_info['total_pixels']} ({collision_info['obstacle_ratio']:.1%})")
             except Exception as e:
                 self._log(f"[COLLISION_2D] ✗ Warning: Cannot load 2D semantic map collision detector: {e}")
                 import traceback
                 traceback.print_exc()
-                self.collision_detector_2d = None
+                self.collision_detector = None
         else:
             if SemanticMap2DCollisionDetector is None:
                 self._log(f"[COLLISION_2D] ✗ Warning: SemanticMap2DCollisionDetector class not available, using original collision detection")
@@ -154,7 +154,7 @@ class SimpleVLNEnv:
             elif not os.path.exists(map_json_path):
                 self._log(f"[COLLISION_2D] ✗ Warning: 2D semantic map file does not exist: {map_json_path}")
         
-        self._log(f"[COLLISION_2D] Final state: collision_detector_2d = {self.collision_detector_2d is not None}")
+        self._log(f"[COLLISION_2D] Final state: collision_detector = {self.collision_detector is not None}")
         self._log(f"[COLLISION_2D] ===== 2D Collision Detector Initialization Complete =====")
 
     def _init_isaac_sim(self):
@@ -1852,9 +1852,9 @@ class SimpleVLNEnv:
                 return False
             
             # Prefer 2D semantic map collision detection
-            if self.collision_detector_2d is not None:
+            if self.collision_detector is not None:
                 
-                is_collision = self.collision_detector_2d.check_collision_3d(new_pos)
+                is_collision = self.collision_detector.check_collision_3d(new_pos)
                 if is_collision:
                     self._collision_detected = True
                     self._total_collision_count += 1  # Increment total collision count (CR metric)
@@ -2237,8 +2237,8 @@ class SimpleVLNEnv:
         """Strictly check if position is safe (no collision)."""
         try:
             # 2D semantic map check
-            if self.collision_detector_2d is not None:
-                if self.collision_detector_2d.check_collision_3d(pos):
+            if self.collision_detector is not None:
+                if self.collision_detector.check_collision_3d(pos):
                     return False
             
             # Additional physics pre-check (optional)
@@ -2607,8 +2607,8 @@ class SimpleVLNEnv:
             temp_pos = self._pos.copy()
             
             # First check 2D semantic map collision
-            if self.collision_detector_2d is not None:
-                is_2d_collision = self.collision_detector_2d.check_collision_3d(next_pos)
+            if self.collision_detector is not None:
+                is_2d_collision = self.collision_detector.check_collision_3d(next_pos)
                 if is_2d_collision:
                     
                     collision_detected = True
