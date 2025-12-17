@@ -100,36 +100,57 @@ Many components of SAGE-3D require NVIDIA Isaac Sim's Python environment, includ
 
 ### Quick Setup
 
-We use **Isaac Sim 5.0+** built from source for our experiments. Follow these steps to set up Isaac Sim:
+Follow these steps to set up **Isaac Sim 5.0(Workstation)**:
+
+**Linux (Ubuntu)**
 
 ```bash
-# 1. Clone Isaac Sim repository
-git clone https://github.com/isaac-sim/IsaacSim.git
-cd IsaacSim
-git lfs install
-git lfs pull
+# 1. Download the Isaac Sim 5.0
+wget https://download.isaacsim.omniverse.nvidia.com/isaac-sim-standalone-5.0.0-linux-x86_64.zip
 
-# 2. Build Isaac Sim
-# Linux
-./build.sh
+# 2. Extract to target directory
+# We recommend installing to ~/isaacsim
+mkdir -p ~/isaacsim
+unzip isaac-sim-standalone-5.0.0-linux-x86_64.zip -d ~/isaacsim
 
-# Windows
-build.bat
+# 3. Install dependencies and drivers
+cd ~/isaacsim
+./post_install.sh
 
-# 3. Run Isaac Sim
-# Linux (x86_64)
-cd _build/linux-x86_64/release
-./isaac-sim.sh
+# 4. Verify installation (Optional selector GUI)
+./isaac-sim.selector.sh
+```
 
-# Windows
-cd _build/windows-x86_64/release
-isaac-sim.bat
+#### Windows
+
+Please ensure you have PowerShell or Command Prompt ready.
+
+```cmd
+:: 1. Download the standalone package manually or via command line if available
+:: URL: https://download.isaacsim.omniverse.nvidia.com/isaac-sim-standalone-5.0.0-windows-x86_64.zip
+
+:: 2. Create installation directory
+mkdir C:\isaacsim
+
+:: 3. Extract the package (Assuming file is in Downloads)
+
+cd %USERPROFILE%\Downloads
+tar -xvzf "isaac-sim-standalone-5.0.0-windows-x86_64.zip" -C C:\isaacsim
+
+:: 4. Install dependencies
+
+cd C:\isaacsim
+post_install.bat
+
+:: 5. Verify installation
+isaac-sim.selector.bat
 ```
 
 **Important Notes:**
+
 - Ensure you have the required GPU drivers and CUDA toolkit installed
 - First-time startup may take several minutes to load extensions and shaders
-- For detailed build instructions, system requirements, and troubleshooting, please refer to the [official Isaac Sim repository](https://github.com/isaac-sim/IsaacSim)
+- For detailed build instructions, system requirements, and troubleshooting, please refer to the [Official Isaac Sim Workstation Installation](https://docs.isaacsim.omniverse.nvidia.com/5.0.0/installation/install_workstation.html)
 
 ### Isaac Sim Python Interpreter
 
@@ -137,10 +158,10 @@ Throughout this repository, when we refer to running scripts with Isaac Sim's Py
 
 ```bash
 # Linux
-/path/to/IsaacSim/_build/linux-x86_64/release/python.sh your_script.py
+~/isaacsim/python.sh your_script.py
 
 # Windows
-/path/to/IsaacSim/_build/windows-x86_64/release/python.bat your_script.py
+C:\isaacsim\python.bat your_script.py
 ```
 
 ### Python Environment Reference
