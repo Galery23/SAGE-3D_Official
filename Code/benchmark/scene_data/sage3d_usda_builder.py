@@ -49,13 +49,12 @@ def read_template(template_path: Path, base_id: str, expected_count: int) -> str
 
 
 def iter_usdz_files(usdz_dir: Path) -> Iterable[Path]:
-    """Yield USDZ files with purely numeric stems (scene IDs)."""
+    """Yield USDZ files."""
     if not usdz_dir.exists():
         raise FileNotFoundError(f"USDZ directory not found: {usdz_dir}")
 
     for usdz_path in sorted(usdz_dir.glob("*.usdz")):
-        if usdz_path.stem.isdigit():
-            yield usdz_path
+        yield usdz_path
 
 
 def replace_placeholder(
@@ -115,11 +114,15 @@ def build_usda_content(
     """
     content = template_text
     
+    # Extract world_id from scene_id (e.g. 0001_839920 -> 839920) for collision path matching
+    world_id = scene_id.split("_")[-1] if "_" in scene_id else scene_id
+    
     # Replace base_id placeholder (for authoring_layer and any other occurrences)
     content = content.replace(base_id, scene_id)
 
     # Replace USDZ reference placeholder
-    usdz_path = usdz_path_template.format(scene_id=scene_id)
+    # Support both {scene_id} and {world_id} in templates
+    usdz_path = usdz_path_template.format(scene_id=scene_id, world_id=world_id)
     content = replace_placeholder(
         content,
         usdz_placeholder,
@@ -128,7 +131,7 @@ def build_usda_content(
     )
 
     # Replace collision payload placeholder
-    collision_path = collision_path_template.format(scene_id=scene_id)
+    collision_path = collision_path_template.format(scene_id=scene_id, world_id=world_id)
     content = replace_placeholder(
         content,
         collision_placeholder,

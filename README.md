@@ -298,7 +298,7 @@ python Code/benchmark/scene_data/sage3d_usda_builder.py \
     --usdz-placeholder "@usdz_root[gauss.usda]@" \
     --collision-placeholder "@collision_root@" \
     --usdz-path-template "/path/to/usdz/{scene_id}.usdz[gauss.usda]" \
-    --collision-path-template "/path/to/collision/{scene_id}/{scene_id}_collision.usd" \
+    --collision-path-template "/path/to/collision/{world_id}/{world_id}_collision.usd" \
     --overwrite
 ```
 
